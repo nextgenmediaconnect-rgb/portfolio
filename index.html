@@ -545,6 +545,210 @@
   .tool-tag:hover { border-color: var(--red); transform: translateY(-3px); }
   .tool-dot { width: 8px; height: 8px; background: var(--red); border-radius: 50%; }
 
+  /* WORK / PORTFOLIO */
+  .work-filter {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+    margin-bottom: 50px;
+  }
+  .filter-btn {
+    padding: 10px 24px;
+    border: 1px solid rgba(255,255,255,0.1);
+    background: transparent;
+    color: var(--muted);
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 13px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    font-weight: 700;
+    cursor: none;
+    transition: all 0.3s;
+  }
+  .filter-btn:hover, .filter-btn.active {
+    background: var(--grad);
+    border-color: transparent;
+    color: white;
+  }
+
+  .work-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+  }
+
+  .work-item {
+    position: relative;
+    background: var(--card);
+    overflow: hidden;
+    border: 1px solid rgba(255,255,255,0.05);
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+    cursor: none;
+  }
+  .work-item:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 30px 60px rgba(0,0,0,0.5);
+    border-color: rgba(255,45,45,0.3);
+  }
+
+  .work-item.featured {
+    grid-column: span 2;
+  }
+
+  .video-thumb {
+    position: relative;
+    width: 100%;
+    padding-top: 56.25%;
+    overflow: hidden;
+    background: #0a0a0a;
+  }
+
+  .video-thumb img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease, opacity 0.3s;
+  }
+  .work-item:hover .video-thumb img { transform: scale(1.05); opacity: 0.6; }
+
+  .video-overlay {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(to top, rgba(0,0,0,0.8) 0%, transparent 60%);
+    opacity: 0;
+    transition: opacity 0.3s;
+  }
+  .work-item:hover .video-overlay { opacity: 1; }
+
+  .play-btn {
+    width: 64px; height: 64px;
+    background: var(--grad);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 22px;
+    transform: scale(0.7);
+    transition: transform 0.3s ease;
+    box-shadow: 0 0 40px rgba(255,45,45,0.5);
+  }
+  .work-item:hover .play-btn { transform: scale(1); }
+
+  .work-info {
+    padding: 20px 24px 24px;
+    position: relative;
+  }
+  .work-info::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 24px; right: 24px;
+    height: 1px;
+    background: linear-gradient(to right, rgba(255,45,45,0.5), transparent);
+  }
+
+  .work-cat {
+    font-size: 10px;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    color: var(--red);
+    font-weight: 700;
+    margin-bottom: 6px;
+  }
+  .work-title {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 18px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+  .work-desc {
+    font-size: 13px;
+    color: var(--muted);
+    font-weight: 300;
+    line-height: 1.6;
+  }
+  .work-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 14px;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 13px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    font-weight: 700;
+    color: var(--red);
+    text-decoration: none;
+    transition: gap 0.3s;
+  }
+  .work-link:hover { gap: 14px; }
+
+  /* VIDEO MODAL */
+  .modal-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.95);
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s;
+    backdrop-filter: blur(10px);
+  }
+  .modal-overlay.open { opacity: 1; pointer-events: all; }
+
+  .modal-inner {
+    position: relative;
+    width: 90%;
+    max-width: 1000px;
+    transform: scale(0.9);
+    transition: transform 0.3s;
+  }
+  .modal-overlay.open .modal-inner { transform: scale(1); }
+
+  .modal-video {
+    position: relative;
+    padding-top: 56.25%;
+    background: #000;
+  }
+  .modal-video iframe {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    border: none;
+  }
+
+  .modal-close {
+    position: absolute;
+    top: -50px;
+    right: 0;
+    background: rgba(255,45,45,0.2);
+    border: 1px solid rgba(255,45,45,0.4);
+    color: white;
+    width: 40px; height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: none;
+    font-size: 18px;
+    transition: background 0.3s;
+  }
+  .modal-close:hover { background: var(--red); }
+
+  @media (max-width: 900px) {
+    .work-grid { grid-template-columns: 1fr; }
+    .work-item.featured { grid-column: span 1; }
+  }
+
   /* CONTACT */
   .contact-inner {
     display: grid;
@@ -808,6 +1012,7 @@
     <li><a href="#about">About</a></li>
     <li><a href="#skills">Skills</a></li>
     <li><a href="#services">Services</a></li>
+    <li><a href="#work">Work</a></li>
     <li><a href="#contact">Contact</a></li>
   </ul>
 </nav>
@@ -1064,10 +1269,176 @@
   </div>
 </section>
 
+<!-- WORK / PORTFOLIO -->
+<section id="work" style="background: var(--black);">
+  <div class="section-header reveal">
+    <div class="section-num">05</div>
+    <div class="section-title-wrap">
+      <div class="section-eyebrow">My Work</div>
+      <div class="section-title">PORTFOLIO</div>
+    </div>
+    <div class="section-line"></div>
+  </div>
+
+  <div class="work-filter reveal">
+    <button class="filter-btn active" onclick="filterWork('all', this)">All Work</button>
+    <button class="filter-btn" onclick="filterWork('reel', this)">Reels</button>
+    <button class="filter-btn" onclick="filterWork('brand', this)">Brand</button>
+    <button class="filter-btn" onclick="filterWork('cinematic', this)">Cinematic</button>
+    <button class="filter-btn" onclick="filterWork('motion', this)">Motion</button>
+  </div>
+
+  <div class="work-grid">
+
+    <div class="work-item featured reveal" data-cat="cinematic" onclick="openModal('Aq1OT1jy8LU')">
+      <div class="video-thumb">
+        <img src="https://img.youtube.com/vi/Aq1OT1jy8LU/maxresdefault.jpg" alt="Project 1" loading="lazy">
+        <div class="video-overlay">
+          <div class="play-btn">▶</div>
+        </div>
+      </div>
+      <div class="work-info">
+        <div class="work-cat">⭐ Featured — Cinematic Edit</div>
+        <div class="work-title">Cinematic Showreel Vol. 1</div>
+        <div class="work-desc">A powerful cinematic edit showcasing color grading, pacing, and storytelling mastery.</div>
+        <a class="work-link" onclick="event.stopPropagation(); openModal('Aq1OT1jy8LU')">Watch Now →</a>
+      </div>
+    </div>
+
+    <div class="work-item reveal" data-cat="reel" onclick="openModal('mmYNXylU6es')">
+      <div class="video-thumb">
+        <img src="https://img.youtube.com/vi/mmYNXylU6es/maxresdefault.jpg" alt="Project 2" loading="lazy">
+        <div class="video-overlay"><div class="play-btn">▶</div></div>
+      </div>
+      <div class="work-info">
+        <div class="work-cat">Reel Edit</div>
+        <div class="work-title">High Energy Reel</div>
+        <div class="work-desc">Fast-paced, scroll-stopping reel with dynamic cuts and motion sync.</div>
+        <a class="work-link" onclick="event.stopPropagation(); openModal('mmYNXylU6es')">Watch Now →</a>
+      </div>
+    </div>
+
+    <div class="work-item reveal" data-cat="brand" onclick="openModal('TsLl54UmB8g')">
+      <div class="video-thumb">
+        <img src="https://img.youtube.com/vi/TsLl54UmB8g/maxresdefault.jpg" alt="Project 3" loading="lazy">
+        <div class="video-overlay"><div class="play-btn">▶</div></div>
+      </div>
+      <div class="work-info">
+        <div class="work-cat">Brand Video</div>
+        <div class="work-title">Brand Story Edit</div>
+        <div class="work-desc">Professional brand video with polished transitions and narrative flow.</div>
+        <a class="work-link" onclick="event.stopPropagation(); openModal('TsLl54UmB8g')">Watch Now →</a>
+      </div>
+    </div>
+
+    <div class="work-item reveal" data-cat="motion" onclick="openModal('WuxZziKwFno')">
+      <div class="video-thumb">
+        <img src="https://img.youtube.com/vi/WuxZziKwFno/maxresdefault.jpg" alt="Project 4" loading="lazy">
+        <div class="video-overlay"><div class="play-btn">▶</div></div>
+      </div>
+      <div class="work-info">
+        <div class="work-cat">Motion Graphics</div>
+        <div class="work-title">Motion & VFX Edit</div>
+        <div class="work-desc">Kinetic typography and motion graphics blended with live footage.</div>
+        <a class="work-link" onclick="event.stopPropagation(); openModal('WuxZziKwFno')">Watch Now →</a>
+      </div>
+    </div>
+
+    <div class="work-item featured reveal" data-cat="cinematic" onclick="openModal('YIizVWAeR3g')">
+      <div class="video-thumb">
+        <img src="https://img.youtube.com/vi/YIizVWAeR3g/maxresdefault.jpg" alt="Project 5" loading="lazy">
+        <div class="video-overlay"><div class="play-btn">▶</div></div>
+      </div>
+      <div class="work-info">
+        <div class="work-cat">Cinematic Edit</div>
+        <div class="work-title">Cinematic Visual Story</div>
+        <div class="work-desc">Dramatic cinematic edit with professional color science and sound design.</div>
+        <a class="work-link" onclick="event.stopPropagation(); openModal('YIizVWAeR3g')">Watch Now →</a>
+      </div>
+    </div>
+
+    <div class="work-item reveal" data-cat="reel" onclick="openModal('Z0JSLdoLEho')">
+      <div class="video-thumb">
+        <img src="https://img.youtube.com/vi/Z0JSLdoLEho/maxresdefault.jpg" alt="Project 6" loading="lazy">
+        <div class="video-overlay"><div class="play-btn">▶</div></div>
+      </div>
+      <div class="work-info">
+        <div class="work-cat">Reel Edit</div>
+        <div class="work-title">Social Media Reel</div>
+        <div class="work-desc">Viral-ready social media content optimized for maximum retention.</div>
+        <a class="work-link" onclick="event.stopPropagation(); openModal('Z0JSLdoLEho')">Watch Now →</a>
+      </div>
+    </div>
+
+    <div class="work-item reveal" data-cat="brand" onclick="openModal('QrOV_0RVG8M')">
+      <div class="video-thumb">
+        <img src="https://img.youtube.com/vi/QrOV_0RVG8M/maxresdefault.jpg" alt="Project 7" loading="lazy">
+        <div class="video-overlay"><div class="play-btn">▶</div></div>
+      </div>
+      <div class="work-info">
+        <div class="work-cat">Brand Video</div>
+        <div class="work-title">Product Showcase</div>
+        <div class="work-desc">Clean, professional product video with sleek transitions and color work.</div>
+        <a class="work-link" onclick="event.stopPropagation(); openModal('QrOV_0RVG8M')">Watch Now →</a>
+      </div>
+    </div>
+
+    <div class="work-item reveal" data-cat="motion" onclick="openModal('0W7vllYxCSY')">
+      <div class="video-thumb">
+        <img src="https://img.youtube.com/vi/0W7vllYxCSY/maxresdefault.jpg" alt="Project 8" loading="lazy">
+        <div class="video-overlay"><div class="play-btn">▶</div></div>
+      </div>
+      <div class="work-info">
+        <div class="work-cat">Motion Edit</div>
+        <div class="work-title">Dynamic Motion Cut</div>
+        <div class="work-desc">High-impact motion edit with beat-synced cuts and visual effects.</div>
+        <a class="work-link" onclick="event.stopPropagation(); openModal('0W7vllYxCSY')">Watch Now →</a>
+      </div>
+    </div>
+
+    <div class="work-item reveal" data-cat="cinematic" onclick="openModal('JRwH81vX0fs')">
+      <div class="video-thumb">
+        <img src="https://img.youtube.com/vi/JRwH81vX0fs/maxresdefault.jpg" alt="Project 9" loading="lazy">
+        <div class="video-overlay"><div class="play-btn">▶</div></div>
+      </div>
+      <div class="work-info">
+        <div class="work-cat">Cinematic</div>
+        <div class="work-title">Cinematic Atmosphere</div>
+        <div class="work-desc">Moody, atmospheric edit with rich color grading and immersive pacing.</div>
+        <a class="work-link" onclick="event.stopPropagation(); openModal('JRwH81vX0fs')">Watch Now →</a>
+      </div>
+    </div>
+
+    <div class="work-item featured reveal" data-cat="reel" onclick="openModal('NRll-BpJsWk')">
+      <div class="video-thumb">
+        <img src="https://img.youtube.com/vi/NRll-BpJsWk/maxresdefault.jpg" alt="Project 10" loading="lazy">
+        <div class="video-overlay"><div class="play-btn">▶</div></div>
+      </div>
+      <div class="work-info">
+        <div class="work-cat">⭐ Latest Work — Reel</div>
+        <div class="work-title">Latest Showreel 2025</div>
+        <div class="work-desc">My most recent work — the best of NextGen Media's creative output in 2025.</div>
+        <a class="work-link" onclick="event.stopPropagation(); openModal('NRll-BpJsWk')">Watch Now →</a>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- VIDEO MODAL -->
+<div class="modal-overlay" id="videoModal" onclick="closeModal(event)">
+  <div class="modal-inner">
+    <button class="modal-close" onclick="closeModalBtn()">✕</button>
+    <div class="modal-video">
+      <iframe id="modalIframe" src="" allowfullscreen allow="autoplay"></iframe>
+    </div>
+  </div>
+</div>
+
 <!-- CONTACT -->
 <section id="contact">
   <div class="section-header reveal">
-    <div class="section-num">05</div>
+    <div class="section-num">06</div>
     <div class="section-title-wrap">
       <div class="section-eyebrow">Get In Touch</div>
       <div class="section-title">CONTACT</div>
@@ -1081,11 +1452,11 @@
       <p>Have a project in mind? Let's talk and bring your vision to life with cinematic precision and creative excellence.</p>
 
       <div class="contact-links">
-        <a href="mailto:nextgenmediaconnect@gmail.com" class="contact-link">
+        <a href="/cdn-cgi/l/email-protection#c4aaa1bcb0a3a1aaa9a1a0ada5a7abaaaaa1a7b084a3a9a5ada8eaa7aba9" class="contact-link">
           <div class="contact-link-icon">✉️</div>
           <div class="contact-link-text">
             <div class="contact-link-label">Email</div>
-            <div class="contact-link-value">nextgenmediaconnect@gmail.com</div>
+            <div class="contact-link-value"><span class="__cf_email__" data-cfemail="81efe4f9f5e6e4efece4e5e8e0e2eeefefe4e2f5c1e6ece0e8edafe2eeec">[email&#160;protected]</span></div>
           </div>
         </a>
         <a href="https://www.instagram.com/nextgenmedia_official/" target="_blank" class="contact-link">
@@ -1129,7 +1500,7 @@
         <label>Tell Me About Your Project</label>
         <textarea placeholder="Brief description of what you need..."></textarea>
       </div>
-      <a href="mailto:nextgenmediaconnect@gmail.com" class="btn-primary" style="width:100%; justify-content:center; display:flex;">
+      <a href="/cdn-cgi/l/email-protection#a3cdc6dbd7c4c6cdcec6c7cac2c0cccdcdc6c0d7e3c4cec2cacf8dc0ccce" class="btn-primary" style="width:100%; justify-content:center; display:flex;">
         ▶ &nbsp; Send Message
       </a>
     </div>
@@ -1144,11 +1515,51 @@
     <a href="https://www.instagram.com/nextgenmedia_official/" target="_blank" class="social-link">📸</a>
     <a href="https://www.linkedin.com/in/tayyab-ali-577997393/" target="_blank" class="social-link">💼</a>
     <a href="https://x.com/Nextgenmedia99" target="_blank" class="social-link">𝕏</a>
-    <a href="mailto:nextgenmediaconnect@gmail.com" class="social-link">✉</a>
+    <a href="/cdn-cgi/l/email-protection#4d232835392a2823202829242c2e222323282e390d2a202c2421632e2220" class="social-link">✉</a>
   </div>
 </footer>
 
-<script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+  // Video Modal
+  function openModal(videoId) {
+    const modal = document.getElementById('videoModal');
+    const iframe = document.getElementById('modalIframe');
+    iframe.src = `https://www.youtube.com/embed/${videoId}?autoplay=1&rel=0`;
+    modal.classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeModal(e) {
+    if (e.target === document.getElementById('videoModal')) closeModalBtn();
+  }
+
+  function closeModalBtn() {
+    const modal = document.getElementById('videoModal');
+    const iframe = document.getElementById('modalIframe');
+    modal.classList.remove('open');
+    iframe.src = '';
+    document.body.style.overflow = '';
+  }
+
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape') closeModalBtn();
+  });
+
+  // Work Filter
+  function filterWork(cat, btn) {
+    document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    document.querySelectorAll('.work-item').forEach(item => {
+      if (cat === 'all' || item.dataset.cat === cat) {
+        item.style.display = '';
+        setTimeout(() => item.style.opacity = '1', 50);
+      } else {
+        item.style.opacity = '0';
+        setTimeout(() => item.style.display = 'none', 300);
+      }
+    });
+  }
+
   // Custom Cursor
   const cursor = document.getElementById('cursor');
   const ring = document.getElementById('cursorRing');
@@ -1198,15 +1609,4 @@
     const target = counter.innerText;
     const num = parseInt(target);
     if (!isNaN(num)) {
-      let current = 0;
-      const inc = num / 40;
-      const timer = setInterval(() => {
-        current += inc;
-        if (current >= num) { counter.innerText = target; clearInterval(timer); }
-        else counter.innerText = Math.floor(current) + (target.includes('+') ? '+' : target.includes('%') ? '%' : '');
-      }, 40);
-    }
-  });
-</script>
-</body>
-</html>
+ 
