@@ -67,6 +67,40 @@ nav {
 .hstat-n { font-family:'Bebas Neue',sans-serif; font-size:44px; background:var(--grad); -webkit-background-clip:text; -webkit-text-fill-color:transparent; line-height:1; }
 .hstat-l { font-size:10px; letter-spacing:2px; text-transform:uppercase; color:var(--muted); margin-top:4px; }
 
+/* HERO TWO-COLUMN */
+.hero-inner { position:relative; z-index:2; display:grid; grid-template-columns:1fr 420px; gap:60px; align-items:center; min-height:calc(100vh - 210px); }
+.hero-left { display:flex; flex-direction:column; }
+
+/* HERO PHOTO */
+.hero-photo-wrap { display:flex; justify-content:flex-end; align-items:center; position:relative; }
+.hero-photo-outer { position:relative; width:380px; flex-shrink:0; }
+
+/* Animated gradient border */
+.hero-photo-outer::before {
+  content:''; position:absolute; inset:-3px; z-index:0;
+  background:linear-gradient(135deg, #9B5DE5, #F15BB5, #9B5DE5);
+  background-size:300% 300%;
+  animation:borderRotate 4s linear infinite;
+}
+.hero-photo-inner { position:relative; z-index:1; overflow:hidden; line-height:0; }
+.hero-photo-inner img { width:100%; height:520px; object-fit:cover; object-position:top center; display:block; filter:saturate(0.95) contrast(1.05); transition:transform .6s; }
+.hero-photo-outer:hover .hero-photo-inner img { transform:scale(1.03); }
+
+/* Overlays */
+.hero-photo-overlay { position:absolute; inset:0; z-index:2; background:linear-gradient(to top, rgba(6,6,8,.7) 0%, transparent 50%); pointer-events:none; }
+.hero-photo-scanline { position:absolute; inset:0; z-index:3; background:repeating-linear-gradient(0deg, transparent, transparent 3px, rgba(0,0,0,.04) 3px, rgba(0,0,0,.04) 6px); pointer-events:none; }
+
+/* Bottom badge */
+.hero-photo-badge { position:absolute; bottom:20px; left:50%; transform:translateX(-50%); z-index:4; display:flex; align-items:center; gap:8px; background:rgba(0,0,0,.7); border:1px solid rgba(155,93,229,.35); backdrop-filter:blur(10px); padding:8px 16px; white-space:nowrap; font-size:9px; letter-spacing:2px; text-transform:uppercase; color:rgba(255,255,255,.6); font-weight:600; }
+.hero-photo-badge-dot { width:5px; height:5px; border-radius:50%; background:var(--p2); animation:pulse 2s ease infinite; flex-shrink:0; }
+
+/* Decorative rings */
+.hero-photo-ring1 { position:absolute; top:-20px; right:-20px; width:80px; height:80px; border-radius:50%; border:1px solid rgba(155,93,229,.2); z-index:5; }
+.hero-photo-ring2 { position:absolute; top:-8px; right:-8px; width:56px; height:56px; border-radius:50%; border:1px solid rgba(241,91,181,.25); z-index:5; }
+
+/* Responsive hero */
+@media(max-width:1100px){ .hero-inner { grid-template-columns:1fr 340px; gap:40px; } .hero-photo-outer { width:320px; } .hero-photo-inner img { height:440px; } }
+
 /* FEATURED SHOWCASE */
 .featured-showcase { margin-top:60px; animation:fadeUp .6s .5s ease both; }
 .featured-label { display:flex; align-items:center; gap:14px; margin-bottom:22px; }
@@ -179,6 +213,39 @@ section { padding:90px 60px; }
 
 .about-mini { background:var(--black); }
 .about-mini-grid { display:grid; grid-template-columns:1fr 1fr; gap:60px; align-items:center; }
+
+/* ABOUT IMAGE */
+.about-img-wrap { position:relative; }
+.about-img-outer { position:relative; display:inline-block; width:100%; max-width:420px; }
+.about-img-outer::before {
+  content:''; position:absolute; inset:-3px; z-index:0;
+  background:linear-gradient(135deg, var(--p1), var(--p2), var(--p1));
+  border-radius:2px;
+  animation:borderRotate 4s linear infinite;
+  background-size:300% 300%;
+}
+@keyframes borderRotate {
+  0%{background-position:0% 50%} 50%{background-position:100% 50%} 100%{background-position:0% 50%}
+}
+.about-img-inner { position:relative; z-index:1; overflow:hidden; line-height:0; }
+.about-img-inner img { width:100%; height:560px; object-fit:cover; object-position:top center; display:block; filter:saturate(0.9) contrast(1.05); transition:transform .6s, filter .4s; }
+.about-img-outer:hover .about-img-inner img { transform:scale(1.03); filter:saturate(1.1) contrast(1.05); }
+.about-img-overlay { position:absolute; inset:0; z-index:2; background:linear-gradient(to top, rgba(6,6,8,.85) 0%, rgba(6,6,8,.1) 50%, transparent 100%); pointer-events:none; }
+.about-img-scanline { position:absolute; inset:0; z-index:3; background:repeating-linear-gradient(0deg, transparent, transparent 3px, rgba(0,0,0,.04) 3px, rgba(0,0,0,.04) 6px); pointer-events:none; }
+.about-img-badge { position:absolute; bottom:24px; left:24px; z-index:4; }
+.about-img-badge-inner { background:rgba(0,0,0,.7); border:1px solid rgba(155,93,229,.4); backdrop-filter:blur(10px); padding:12px 18px; }
+.about-img-badge-name { font-family:"Bebas Neue",sans-serif; font-size:22px; letter-spacing:3px; background:linear-gradient(135deg,var(--p1),var(--p2)); -webkit-background-clip:text; -webkit-text-fill-color:transparent; line-height:1; }
+.about-img-badge-role { font-size:9px; letter-spacing:2.5px; text-transform:uppercase; color:rgba(255,255,255,.5); font-weight:600; margin-top:4px; }
+.about-img-corner { position:absolute; top:14px; right:14px; z-index:4; display:flex; align-items:center; gap:6px; background:rgba(0,0,0,.6); border:1px solid rgba(255,255,255,.1); backdrop-filter:blur(8px); padding:6px 12px; font-size:9px; letter-spacing:2px; text-transform:uppercase; color:rgba(255,255,255,.5); font-weight:600; }
+.about-img-dot { width:5px; height:5px; border-radius:50%; background:var(--p2); animation:pulse 2s ease infinite; }
+/* Decorative lines */
+.about-deco-line { position:absolute; width:40px; height:2px; background:var(--grad); }
+.about-deco-line.tl { top:-12px; left:0; }
+.about-deco-line.br { bottom:-12px; right:0; }
+.about-deco-dot-wrap { position:absolute; top:-20px; right:-20px; z-index:5; }
+.about-deco-ring { width:60px; height:60px; border-radius:50%; border:1px solid rgba(155,93,229,.2); display:flex; align-items:center; justify-content:center; }
+.about-deco-ring2 { width:36px; height:36px; border-radius:50%; border:1px solid rgba(241,91,181,.25); display:flex; align-items:center; justify-content:center; }
+.about-deco-center { width:8px; height:8px; border-radius:50%; background:var(--grad); }
 .about-txt h2 { font-family:'Bebas Neue',sans-serif; font-size:clamp(36px,5vw,60px); letter-spacing:2px; line-height:1; margin-bottom:18px; }
 .about-txt p { color:var(--muted); line-height:1.9; font-size:14px; margin-bottom:14px; font-weight:300; }
 .hl { color:var(--p2); font-weight:500; }
@@ -224,6 +291,10 @@ footer { background:var(--black); border-top:1px solid rgba(255,255,255,.05); pa
   .nav-links { display:none; }
   section { padding:60px 20px; }
   .hero { padding:110px 20px 70px; }
+  .hero-inner { grid-template-columns:1fr; gap:40px; }
+  .hero-photo-wrap { justify-content:center; }
+  .hero-photo-outer { width:100%; max-width:340px; }
+  .hero-photo-inner img { height:400px; }
   .work-grid { grid-template-columns:1fr; }
   .wi.feat { grid-column:span 1; }
   .testi-grid { grid-template-columns:1fr; }
@@ -234,6 +305,9 @@ footer { background:var(--black); border-top:1px solid rgba(255,255,255,.05); pa
   .featured-grid { grid-template-columns:1fr; }
   .fv-main { grid-row:span 1; }
   .fv-main .fv-thumb { min-height:200px; }
+  .about-mini-grid { grid-template-columns:1fr !important; }
+  .about-img-outer { max-width:100%; }
+  .about-img-inner img { height:360px; }
 }
 </style>
 </head>
@@ -257,24 +331,47 @@ footer { background:var(--black); border-top:1px solid rgba(255,255,255,.05); pa
   <div class="hero-noise"></div>
   <div class="hero-glow"></div>
   <div class="hero-grid"></div>
-  <div style="position:relative;z-index:2;">
-    <div class="hero-tag"><div class="live-dot"></div>Available for Projects</div>
-    <h1 class="hero-name">TAYYAB<br><span class="grd">ALI</span></h1>
-    <div class="hero-role">Video Editor &nbsp;/&nbsp; Motion Designer</div>
-    <div class="hero-hooks">
-      <div class="hook-pill"><span class="hook-ico">📈</span> I <span class="hook-highlight">&nbsp;increase engagement&nbsp;</span></div>
-      <div class="hook-pill"><span class="hook-ico">🔁</span> I <span class="hook-highlight">&nbsp;improve retention&nbsp;</span></div>
-      <div class="hook-pill"><span class="hook-ico">🚀</span> I make <span class="hook-highlight">&nbsp;viral SaaS edits&nbsp;</span></div>
+  <div class="hero-inner">
+
+    <!-- LEFT: TEXT -->
+    <div class="hero-left">
+      <div class="hero-tag"><div class="live-dot"></div>Available for Projects</div>
+      <h1 class="hero-name">TAYYAB<br><span class="grd">ALI</span></h1>
+      <div class="hero-role">Video Editor &nbsp;/&nbsp; Motion Designer</div>
+      <div class="hero-hooks">
+        <div class="hook-pill"><span class="hook-ico">📈</span> I <span class="hook-highlight">&nbsp;increase engagement&nbsp;</span></div>
+        <div class="hook-pill"><span class="hook-ico">🔁</span> I <span class="hook-highlight">&nbsp;improve retention&nbsp;</span></div>
+        <div class="hook-pill"><span class="hook-ico">🚀</span> I make <span class="hook-highlight">&nbsp;viral SaaS edits&nbsp;</span></div>
+      </div>
+      <div class="hero-btns">
+        <a href="#work" class="btn-main">&#9654;&nbsp; See My Work</a>
+        <a href="#contact" class="btn-out">Hire Me Now &rarr;</a>
+      </div>
+      <div class="hero-stats">
+        <div class="hstat"><div class="hstat-n">3+</div><div class="hstat-l">Years Experience</div></div>
+        <div class="hstat"><div class="hstat-n">100+</div><div class="hstat-l">Projects Done</div></div>
+        <div class="hstat"><div class="hstat-n">100%</div><div class="hstat-l">Client Satisfaction</div></div>
+      </div>
     </div>
-    <div class="hero-btns">
-      <a href="#work" class="btn-main">&#9654;&nbsp; See My Work</a>
-      <a href="#contact" class="btn-out">Hire Me Now &rarr;</a>
+
+    <!-- RIGHT: CINEMATIC PHOTO -->
+    <div class="hero-photo-wrap">
+      <div class="hero-photo-outer">
+        <div class="hero-photo-ring1"></div>
+        <div class="hero-photo-ring2"></div>
+        <div class="hero-photo-inner">
+          <img src="tayyab.jpeg" alt="Tayyab Ali">
+        </div>
+        <div class="hero-photo-overlay"></div>
+        <div class="hero-photo-scanline"></div>
+        <div class="hero-photo-badge">
+          <div class="hero-photo-badge-dot"></div>
+          <span>NextGen Media — Pakistan</span>
+        </div>
+      </div>
     </div>
-    <div class="hero-stats">
-      <div class="hstat"><div class="hstat-n">3+</div><div class="hstat-l">Years Experience</div></div>
-      <div class="hstat"><div class="hstat-n">100+</div><div class="hstat-l">Projects Done</div></div>
-      <div class="hstat"><div class="hstat-n">100%</div><div class="hstat-l">Client Satisfaction</div></div>
-    </div>
+
+  </div>
 
     <!-- CINEMATIC FEATURED SHOWCASE -->
     <div class="featured-showcase">
@@ -298,7 +395,7 @@ footer { background:var(--black); border-top:1px solid rgba(255,255,255,.05); pa
           <div class="fv-info">
             <div class="fv-badge">&#11088; Latest Edit</div>
             <div class="fv-title">Watch Featured Edit</div>
-            <div class="fv-desc">Cinematic precision meets fast-paced SaaS storytelling.</div>
+            <div class="fv-desc">Cinematic precision meets high-energy storytelling.</div>
           </div>
         </div>
 
@@ -529,7 +626,7 @@ footer { background:var(--black); border-top:1px solid rgba(255,255,255,.05); pa
     </div>
     <div class="testi-card rv">
       <div class="testi-stars"><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span></div>
-      <p class="testi-text">"Man your work is W! Delivered ahead of deadline with zero revisions needed. If you want a video editor who actually understands retention, this is your guy."</p>
+      <p class="testi-text">"Man your work is W! Delivered ahead of deadline with zero revisions needed. If you want a video editor who actually understands retention.This is your guy."</p>
       <div class="testi-author">
         <div class="testi-avatar">A</div>
         <div><div class="testi-name">Ibrahim Alameddine</div><div class="testi-role">Marketing Agency, AUS</div></div>
@@ -537,7 +634,7 @@ footer { background:var(--black); border-top:1px solid rgba(255,255,255,.05); pa
     </div>
     <div class="testi-card rv">
       <div class="testi-stars"><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span></div>
-      <p class="testi-text">"Working with TAYYAB changed the game for our social presence. We used to struggle with getting our seasonal drops edited in time, but now our Reels and TikToks are polished, punchy, and actually converting. The attention to detail especially the sound design and pacing is something you just don't get with standard editors."</p>
+      <p class="testi-text">"Working with this team changed the game for our social presence. We used to struggle with getting our seasonal drops edited in time, but now our Reels and TikToks are polished, punchy, and actually converting. The attention to detail especially the sound design and pacing is something you just don't get with standard editors."</p>
       <div class="testi-author">
         <div class="testi-avatar">R</div>
         <div><div class="testi-name">Sarthak Rastogi</div><div class="testi-role">Clothing Brand Founder, IND</div></div>
@@ -545,7 +642,7 @@ footer { background:var(--black); border-top:1px solid rgba(255,255,255,.05); pa
     </div>
     <div class="testi-card rv">
       <div class="testi-stars"><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span></div>
-      <p class="testi-text">"The pacing is professional, the color grading is spot-on for our brand, and the final edits have been instrumental in our presentations to Tier 1 builders. Truly a creative partner who understands the premium nature of the construction and design industry."</p>
+      <p class="testi-text">"The pacing is professional, the color grading is spot on for our brand, and the final edits have been instrumental in our presentations to Tier 1 builders. Truly a creative partner who understands the premium nature of the construction and design industry."</p>
       <div class="testi-author">
         <div class="testi-avatar">A</div>
         <div><div class="testi-name">Director, AB Con Design</div><div class="testi-role">Construction Company, AUS</div></div>
@@ -569,7 +666,9 @@ footer { background:var(--black); border-top:1px solid rgba(255,255,255,.05); pa
     <div><div class="sec-eye">Who I Am</div><div class="sec-title">ABOUT</div></div>
     <div class="sec-line"></div>
   </div>
-  <div class="about-mini-grid">
+  <div class="about-mini-grid" style="grid-template-columns:1fr 1.1fr;">
+
+    <!-- LEFT: TEXT -->
     <div class="about-txt rv">
       <h2>STORIES TOLD<br><span style="background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent;">FRAME BY FRAME</span></h2>
       <p>I'm <span class="hl">Tayyab Ali</span> — video editor and motion designer running <span class="hl">NextGen Media</span> from Pakistan. 3+ years turning raw footage into high-performance content for brands, creators, and SaaS companies worldwide.</p>
@@ -580,25 +679,51 @@ footer { background:var(--black); border-top:1px solid rgba(255,255,255,.05); pa
         <span class="s-chip">Color Grading</span>
         <span class="s-chip">VFX</span>
         <span class="s-chip">Sound Design</span>
-        <span class="s-chip">Reels & Shorts</span>
+        <span class="s-chip">Reels &amp; Shorts</span>
       </div>
-    </div>
-    <div class="rv">
-      <div style="border:1px solid rgba(255,255,255,.06);padding:40px;background:var(--card);position:relative;">
+      <div style="margin-top:32px;border:1px solid rgba(255,255,255,.06);padding:28px;background:var(--card);position:relative;">
         <div style="position:absolute;top:0;left:0;right:0;height:2px;background:var(--grad);"></div>
-        <div style="font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--p2);font-weight:700;margin-bottom:22px;">My Toolkit</div>
+        <div style="font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--p2);font-weight:700;margin-bottom:18px;">My Toolkit</div>
         <div class="tools-row-mini">
           <div class="t-tag"><span class="t-d"></span>Premiere Pro</div>
           <div class="t-tag"><span class="t-d"></span>After Effects</div>
           <div class="t-tag"><span class="t-d"></span>Adobe Audition</div>
           <div class="t-tag"><span class="t-d"></span>Photoshop</div>
           <div class="t-tag"><span class="t-d"></span>Media Encoder</div>
-          <div class="t-tag"><span class="t-d"></span>LUTs & Color Science</div>
+          <div class="t-tag"><span class="t-d"></span>LUTs &amp; Color Science</div>
           <div class="t-tag"><span class="t-d"></span>Motion Tracking</div>
           <div class="t-tag"><span class="t-d"></span>Green Screen</div>
         </div>
       </div>
     </div>
+
+    <!-- RIGHT: CINEMATIC PHOTO -->
+    <div class="about-img-wrap rv">
+      <div class="about-img-outer">
+        <div class="about-deco-dot-wrap">
+          <div class="about-deco-ring">
+            <div class="about-deco-ring2">
+              <div class="about-deco-center"></div>
+            </div>
+          </div>
+        </div>
+        <div class="about-deco-line tl"></div>
+        <div class="about-deco-line br"></div>
+        <div class="about-img-inner">
+          <img src="tayyab.jpeg" alt="Tayyab Ali — NextGen Media" style="object-position:top center;">
+        </div>
+        <div class="about-img-overlay"></div>
+        <div class="about-img-scanline"></div>
+        <div class="about-img-corner"><span class="about-img-dot"></span>NextGen Media</div>
+        <div class="about-img-badge">
+          <div class="about-img-badge-inner">
+            <div class="about-img-badge-name">TAYYAB ALI</div>
+            <div class="about-img-badge-role">Video Editor &amp; Motion Designer</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
   </div>
 </section>
 
