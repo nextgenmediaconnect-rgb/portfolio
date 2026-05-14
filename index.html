@@ -21,11 +21,9 @@
 html { scroll-behavior:smooth; }
 body { background:var(--black); color:var(--white); font-family:'DM Sans',sans-serif; overflow-x:hidden; }
 
-/* CURSOR */
 #cur { position:fixed; width:8px; height:8px; background:var(--p2); border-radius:50%; pointer-events:none; z-index:9999; transform:translate(-50%,-50%); opacity:0; transition:opacity .3s; }
 #cur-ring { position:fixed; width:32px; height:32px; border:1px solid rgba(155,93,229,.6); border-radius:50%; pointer-events:none; z-index:9998; transform:translate(-50%,-50%); opacity:0; transition:width .25s, height .25s, opacity .3s; }
 
-/* NAV */
 nav {
   position:fixed; top:0; left:0; right:0; z-index:200;
   display:flex; align-items:center; justify-content:space-between; padding:20px 60px;
@@ -39,84 +37,88 @@ nav {
 .nav-cta { background:var(--grad); color:#fff; padding:10px 24px; font-size:11px; letter-spacing:2px; text-transform:uppercase; font-weight:600; text-decoration:none; font-family:'DM Sans',sans-serif; transition:opacity .25s, transform .25s; }
 .nav-cta:hover { opacity:.85; transform:translateY(-1px); }
 
-/* HERO */
 .hero { min-height:100vh; display:flex; flex-direction:column; justify-content:center; padding:130px 60px 80px; position:relative; overflow:hidden; }
+.hero-noise { position:absolute; inset:0; pointer-events:none; opacity:.025; background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E"); background-size:128px; }
+.hero-glow { position:absolute; inset:0; pointer-events:none; background: radial-gradient(ellipse 60% 70% at 80% 40%, rgba(155,93,229,.12), transparent), radial-gradient(ellipse 40% 50% at 10% 80%, rgba(241,91,181,.07), transparent); }
+.hero-grid { position:absolute; inset:0; pointer-events:none; background-image: linear-gradient(rgba(255,255,255,.02) 1px,transparent 1px), linear-gradient(90deg,rgba(255,255,255,.02) 1px,transparent 1px); background-size:70px 70px; }
 
-.hero-noise {
-  position:absolute; inset:0; pointer-events:none; opacity:.025;
-  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
-  background-size:128px;
-}
-.hero-glow {
-  position:absolute; inset:0; pointer-events:none;
-  background: radial-gradient(ellipse 60% 70% at 80% 40%, rgba(155,93,229,.12), transparent),
-              radial-gradient(ellipse 40% 50% at 10% 80%, rgba(241,91,181,.07), transparent);
-}
-.hero-grid {
-  position:absolute; inset:0; pointer-events:none;
-  background-image: linear-gradient(rgba(255,255,255,.02) 1px,transparent 1px), linear-gradient(90deg,rgba(255,255,255,.02) 1px,transparent 1px);
-  background-size:70px 70px;
-}
-
-.hero-tag {
-  display:inline-flex; align-items:center; gap:10px;
-  border:1px solid rgba(155,93,229,.3); background:rgba(155,93,229,.07);
-  padding:7px 18px; margin-bottom:30px; width:fit-content;
-  font-size:10px; letter-spacing:3px; text-transform:uppercase; color:var(--p1); font-weight:600;
-  animation:fadeUp .6s ease both;
-}
+.hero-tag { display:inline-flex; align-items:center; gap:10px; border:1px solid rgba(155,93,229,.3); background:rgba(155,93,229,.07); padding:7px 18px; margin-bottom:30px; width:fit-content; font-size:10px; letter-spacing:3px; text-transform:uppercase; color:var(--p1); font-weight:600; animation:fadeUp .6s ease both; }
 .live-dot { width:6px; height:6px; border-radius:50%; background:var(--p2); animation:pulse 1.8s ease infinite; }
 @keyframes pulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:.3;transform:scale(1.8)} }
 
-.hero-name {
-  font-family:'Bebas Neue',sans-serif; font-size:clamp(70px,13vw,160px);
-  line-height:.85; letter-spacing:3px; margin-bottom:10px; animation:fadeUp .6s .08s ease both;
-}
+.hero-name { font-family:'Bebas Neue',sans-serif; font-size:clamp(70px,13vw,160px); line-height:.85; letter-spacing:3px; margin-bottom:10px; animation:fadeUp .6s .08s ease both; }
 .hero-name .grd { background:var(--grad); -webkit-background-clip:text; -webkit-text-fill-color:transparent; }
 .hero-role { font-family:'Syne',sans-serif; font-size:clamp(14px,2vw,20px); letter-spacing:5px; text-transform:uppercase; color:var(--muted); margin-bottom:40px; font-weight:700; animation:fadeUp .6s .16s ease both; }
 
-/* HOOK PILLS */
 .hero-hooks { display:flex; gap:12px; flex-wrap:wrap; margin-bottom:44px; animation:fadeUp .6s .22s ease both; }
-.hook-pill {
-  display:flex; align-items:center; gap:9px;
-  border:1px solid rgba(255,255,255,.08); background:rgba(255,255,255,.03);
-  padding:10px 20px; font-size:12px; letter-spacing:1px; color:var(--white); font-weight:500;
-}
+.hook-pill { display:flex; align-items:center; gap:9px; border:1px solid rgba(255,255,255,.08); background:rgba(255,255,255,.03); padding:10px 20px; font-size:12px; letter-spacing:1px; color:var(--white); font-weight:500; }
 .hook-ico { font-size:16px; }
 .hook-highlight { color:var(--p2); font-weight:600; }
 
 .hero-btns { display:flex; gap:14px; flex-wrap:wrap; animation:fadeUp .6s .3s ease both; }
-.btn-main {
-  display:inline-flex; align-items:center; gap:10px;
-  background:var(--grad); color:#fff; padding:15px 32px;
-  font-family:'DM Sans',sans-serif; font-size:12px; letter-spacing:2px; text-transform:uppercase; font-weight:600;
-  text-decoration:none; position:relative; overflow:hidden; cursor:pointer; border:none;
-  transition:transform .3s,box-shadow .3s;
-}
+.btn-main { display:inline-flex; align-items:center; gap:10px; background:var(--grad); color:#fff; padding:15px 32px; font-family:'DM Sans',sans-serif; font-size:12px; letter-spacing:2px; text-transform:uppercase; font-weight:600; text-decoration:none; position:relative; overflow:hidden; cursor:pointer; border:none; transition:transform .3s,box-shadow .3s; }
 .btn-main::after { content:''; position:absolute; inset:0; background:rgba(255,255,255,.15); transform:translateX(-101%); transition:transform .35s; }
 .btn-main:hover::after { transform:translateX(0); }
 .btn-main:hover { transform:translateY(-3px); box-shadow:0 20px 50px rgba(155,93,229,.4); }
-.btn-out {
-  display:inline-flex; align-items:center; gap:10px;
-  border:1px solid rgba(255,255,255,.12); color:var(--white); padding:15px 32px;
-  font-family:'DM Sans',sans-serif; font-size:12px; letter-spacing:2px; text-transform:uppercase; font-weight:600;
-  text-decoration:none; cursor:pointer; transition:border-color .3s,color .3s,transform .3s;
-}
+.btn-out { display:inline-flex; align-items:center; gap:10px; border:1px solid rgba(255,255,255,.12); color:var(--white); padding:15px 32px; font-family:'DM Sans',sans-serif; font-size:12px; letter-spacing:2px; text-transform:uppercase; font-weight:600; text-decoration:none; cursor:pointer; transition:border-color .3s,color .3s,transform .3s; }
 .btn-out:hover { border-color:var(--p1); color:var(--p1); transform:translateY(-3px); }
 
-/* STATS INLINE */
 .hero-stats { display:flex; gap:50px; margin-top:60px; padding-top:50px; border-top:1px solid rgba(255,255,255,.06); animation:fadeUp .6s .4s ease both; }
 .hstat-n { font-family:'Bebas Neue',sans-serif; font-size:44px; background:var(--grad); -webkit-background-clip:text; -webkit-text-fill-color:transparent; line-height:1; }
 .hstat-l { font-size:10px; letter-spacing:2px; text-transform:uppercase; color:var(--muted); margin-top:4px; }
 
-/* MARQUEE */
+/* FEATURED SHOWCASE */
+.featured-showcase { margin-top:60px; animation:fadeUp .6s .5s ease both; }
+.featured-label { display:flex; align-items:center; gap:14px; margin-bottom:22px; }
+.featured-label-line { flex:1; height:1px; background:linear-gradient(to right, rgba(155,93,229,.5), transparent); }
+.featured-label-text { font-size:9px; letter-spacing:3px; text-transform:uppercase; color:var(--p2); font-weight:700; white-space:nowrap; }
+
+.featured-grid { display:grid; grid-template-columns:1.7fr 1fr; grid-template-rows:auto auto; gap:10px; max-width:860px; }
+
+/* Main big card */
+.fv-main { grid-row: span 2; position:relative; overflow:hidden; cursor:pointer; background:#0a0a0c; border:1px solid rgba(155,93,229,.15); transition:border-color .4s, box-shadow .4s; }
+.fv-main:hover { border-color:rgba(155,93,229,.55); box-shadow:0 30px 80px rgba(155,93,229,.2); }
+.fv-main .fv-thumb { position:relative; width:100%; height:100%; min-height:260px; }
+.fv-main .fv-thumb img { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; transition:transform .6s, opacity .4s; opacity:.75; }
+.fv-main:hover .fv-thumb img { transform:scale(1.05); opacity:.4; }
+
+/* Small side cards */
+.fv-side { position:relative; overflow:hidden; cursor:pointer; background:#0a0a0c; border:1px solid rgba(155,93,229,.1); transition:border-color .4s, box-shadow .4s; }
+.fv-side:hover { border-color:rgba(241,91,181,.5); box-shadow:0 20px 50px rgba(241,91,181,.15); }
+.fv-side .fv-thumb { position:relative; width:100%; padding-top:56.25%; }
+.fv-side .fv-thumb img { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; transition:transform .5s, opacity .4s; opacity:.7; }
+.fv-side:hover .fv-thumb img { transform:scale(1.06); opacity:.35; }
+
+/* Shared overlay */
+.fv-overlay { position:absolute; inset:0; background:linear-gradient(to top, rgba(0,0,0,.88) 0%, rgba(0,0,0,.2) 50%, transparent 100%); pointer-events:none; }
+.fv-play { position:absolute; top:50%; left:50%; transform:translate(-50%,-50%) scale(.75); width:56px; height:56px; border-radius:50%; background:var(--grad); display:flex; align-items:center; justify-content:center; font-size:18px; color:#fff; box-shadow:0 0 40px rgba(155,93,229,.5); transition:transform .3s, box-shadow .3s; }
+.fv-main .fv-play { width:68px; height:68px; font-size:22px; }
+.fv-main:hover .fv-play, .fv-side:hover .fv-play { transform:translate(-50%,-50%) scale(1); box-shadow:0 0 60px rgba(155,93,229,.7); }
+
+.fv-info { position:absolute; bottom:0; left:0; right:0; padding:18px 20px 20px; }
+.fv-badge { display:inline-flex; align-items:center; gap:6px; background:rgba(155,93,229,.18); border:1px solid rgba(155,93,229,.35); padding:4px 10px; font-size:9px; letter-spacing:2px; text-transform:uppercase; color:var(--p1); font-weight:700; margin-bottom:8px; }
+.fv-badge.pink { background:rgba(241,91,181,.12); border-color:rgba(241,91,181,.3); color:var(--p2); }
+.fv-title { font-family:'Syne',sans-serif; font-weight:800; letter-spacing:.5px; text-transform:uppercase; line-height:1.15; }
+.fv-main .fv-title { font-size:clamp(16px,2vw,22px); }
+.fv-side .fv-title { font-size:13px; }
+.fv-desc { font-size:11px; color:rgba(255,255,255,.5); margin-top:5px; font-weight:300; line-height:1.5; }
+.fv-main .fv-desc { font-size:12px; }
+.fv-cine-tag { position:absolute; top:14px; right:14px; display:flex; align-items:center; gap:6px; background:rgba(0,0,0,.6); border:1px solid rgba(255,255,255,.1); backdrop-filter:blur(8px); padding:5px 10px; font-size:9px; letter-spacing:2px; text-transform:uppercase; color:rgba(255,255,255,.6); font-weight:600; }
+.fv-cine-dot { width:5px; height:5px; border-radius:50%; background:var(--p2); animation:pulse 2s ease infinite; }
+
+/* Cinematic scan line effect */
+.fv-scanline { position:absolute; inset:0; pointer-events:none; background:repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(0,0,0,.03) 2px, rgba(0,0,0,.03) 4px); opacity:.4; }
+
+/* Glow borders on hover */
+.fv-main::after { content:''; position:absolute; inset:0; border:1px solid rgba(155,93,229,0); transition:border-color .4s; pointer-events:none; }
+.fv-main:hover::after { border-color:rgba(155,93,229,.4); }
+
 .mq-wrap { overflow:hidden; border-top:1px solid rgba(255,255,255,.04); border-bottom:1px solid rgba(255,255,255,.04); padding:14px 0; background:rgba(155,93,229,.03); }
 .mq-track { display:flex; width:max-content; animation:mq 22s linear infinite; }
 @keyframes mq { from{transform:translateX(0)} to{transform:translateX(-50%)} }
 .mq-item { display:flex; align-items:center; gap:20px; padding:0 32px; font-size:11px; letter-spacing:3px; text-transform:uppercase; color:var(--muted); font-weight:600; white-space:nowrap; }
 .mq-dot { width:4px; height:4px; border-radius:50%; background:var(--p2); flex-shrink:0; }
 
-/* SECTION SHARED */
 section { padding:90px 60px; }
 .sec-head { display:flex; align-items:flex-end; gap:18px; margin-bottom:56px; }
 .sec-n { font-family:'Bebas Neue',sans-serif; font-size:64px; color:rgba(155,93,229,.08); line-height:1; letter-spacing:-2px; flex-shrink:0; }
@@ -124,7 +126,6 @@ section { padding:90px 60px; }
 .sec-title { font-family:'Bebas Neue',sans-serif; font-size:clamp(32px,5vw,54px); letter-spacing:2px; line-height:1; }
 .sec-line { flex:1; height:1px; background:linear-gradient(to right,rgba(155,93,229,.4),transparent); margin-bottom:12px; }
 
-/* WORK */
 .work-wrap { background:var(--black); }
 .work-filters { display:flex; gap:8px; flex-wrap:wrap; margin-bottom:40px; }
 .wf-btn { padding:8px 20px; border:1px solid rgba(255,255,255,.08); background:transparent; color:var(--muted); font-size:11px; letter-spacing:2px; text-transform:uppercase; font-weight:600; cursor:pointer; transition:all .25s; }
@@ -149,7 +150,9 @@ section { padding:90px 60px; }
 .wi-link { display:inline-flex; align-items:center; gap:7px; margin-top:10px; font-size:11px; letter-spacing:2px; text-transform:uppercase; font-weight:600; color:var(--p1); background:none; border:none; cursor:pointer; padding:0; transition:gap .3s,color .3s; }
 .wi-link:hover { gap:12px; color:var(--p2); }
 
-/* VIDEO MODAL */
+/* Shorts badge */
+.shorts-badge { display:inline-flex; align-items:center; gap:5px; background:rgba(255,0,0,.15); border:1px solid rgba(255,0,0,.3); color:#ff4444; font-size:9px; letter-spacing:1.5px; text-transform:uppercase; font-weight:700; padding:3px 8px; margin-left:8px; vertical-align:middle; }
+
 .modal { position:fixed; inset:0; z-index:500; background:rgba(0,0,0,.94); backdrop-filter:blur(16px); display:flex; align-items:center; justify-content:center; opacity:0; pointer-events:none; transition:opacity .3s; }
 .modal.show { opacity:1; pointer-events:all; }
 .modal-box { position:relative; width:92%; max-width:980px; transform:scale(.88); transition:transform .3s; }
@@ -158,14 +161,12 @@ section { padding:90px 60px; }
 .modal-x:hover { background:var(--p1); }
 .modal-frame { position:relative; padding-top:56.25%; background:#000; }
 .modal-frame iframe { position:absolute; inset:0; width:100%; height:100%; border:none; }
+/* Shorts modal uses vertical aspect ratio */
+.modal-box.shorts-mode .modal-frame { padding-top:0; height:80vh; max-height:640px; }
 
-/* TESTIMONIALS */
 .testi-wrap { background:var(--dark); }
 .testi-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:2px; }
-.testi-card {
-  background:var(--card); padding:36px; position:relative; overflow:hidden;
-  border:1px solid rgba(255,255,255,.04); transition:border-color .3s,transform .3s;
-}
+.testi-card { background:var(--card); padding:36px; position:relative; overflow:hidden; border:1px solid rgba(255,255,255,.04); transition:border-color .3s,transform .3s; }
 .testi-card:hover { border-color:rgba(155,93,229,.3); transform:translateY(-4px); }
 .testi-card::before { content:'\201C'; position:absolute; top:-8px; left:24px; font-size:120px; color:rgba(155,93,229,.07); font-family:'Bebas Neue',sans-serif; line-height:1; pointer-events:none; }
 .testi-text { font-size:14px; line-height:1.85; color:#aaa; font-weight:300; margin-bottom:24px; font-style:italic; position:relative; z-index:1; }
@@ -176,7 +177,6 @@ section { padding:90px 60px; }
 .testi-stars { display:flex; gap:3px; margin-bottom:16px; }
 .star { color:var(--p2); font-size:13px; }
 
-/* ABOUT MINI */
 .about-mini { background:var(--black); }
 .about-mini-grid { display:grid; grid-template-columns:1fr 1fr; gap:60px; align-items:center; }
 .about-txt h2 { font-family:'Bebas Neue',sans-serif; font-size:clamp(36px,5vw,60px); letter-spacing:2px; line-height:1; margin-bottom:18px; }
@@ -189,7 +189,6 @@ section { padding:90px 60px; }
 .t-tag:hover { border-color:var(--p1); }
 .t-d { width:5px; height:5px; border-radius:50%; background:var(--p2); flex-shrink:0; }
 
-/* CONTACT */
 .contact-section { background:var(--dark); }
 .contact-grid { display:grid; grid-template-columns:1fr 1fr; gap:64px; align-items:start; }
 .ct-left h2 { font-family:'Bebas Neue',sans-serif; font-size:clamp(44px,7vw,88px); line-height:.9; letter-spacing:2px; margin-bottom:22px; }
@@ -209,7 +208,6 @@ section { padding:90px 60px; }
 .fg input:focus, .fg textarea:focus { border-color:var(--p1); }
 .fg textarea { height:100px; resize:vertical; }
 
-/* FOOTER */
 footer { background:var(--black); border-top:1px solid rgba(255,255,255,.05); padding:26px 60px; display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:16px; }
 .f-logo { font-family:'Bebas Neue',sans-serif; font-size:18px; letter-spacing:3px; background:var(--grad); -webkit-background-clip:text; -webkit-text-fill-color:transparent; }
 .f-copy { color:var(--muted); font-size:11px; font-weight:300; }
@@ -217,12 +215,10 @@ footer { background:var(--black); border-top:1px solid rgba(255,255,255,.05); pa
 .f-soc { width:34px; height:34px; border:1px solid rgba(255,255,255,.08); display:flex; align-items:center; justify-content:center; text-decoration:none; color:var(--muted); font-size:14px; transition:border-color .3s,color .3s,transform .3s; }
 .f-soc:hover { border-color:var(--p1); color:var(--p1); transform:translateY(-3px); }
 
-/* ANIMATIONS */
 @keyframes fadeUp { from{opacity:0;transform:translateY(24px)} to{opacity:1;transform:translateY(0)} }
 .rv { opacity:0; transform:translateY(30px); transition:opacity .6s ease,transform .6s ease; }
 .rv.vis { opacity:1; transform:translateY(0); }
 
-/* RESPONSIVE */
 @media(max-width:900px){
   nav { padding:16px 20px; }
   .nav-links { display:none; }
@@ -235,6 +231,9 @@ footer { background:var(--black); border-top:1px solid rgba(255,255,255,.05); pa
   .contact-grid { grid-template-columns:1fr; gap:44px; }
   footer { padding:20px; }
   .hero-stats { gap:30px; flex-wrap:wrap; }
+  .featured-grid { grid-template-columns:1fr; }
+  .fv-main { grid-row:span 1; }
+  .fv-main .fv-thumb { min-height:200px; }
 }
 </style>
 </head>
@@ -243,7 +242,6 @@ footer { background:var(--black); border-top:1px solid rgba(255,255,255,.05); pa
 <div id="cur"></div>
 <div id="cur-ring"></div>
 
-<!-- NAV -->
 <nav>
   <div class="nav-logo">NEXTGEN MEDIA</div>
   <ul class="nav-links">
@@ -255,37 +253,91 @@ footer { background:var(--black); border-top:1px solid rgba(255,255,255,.05); pa
   <a href="#contact" class="nav-cta">Hire Me</a>
 </nav>
 
-<!-- HERO -->
 <section class="hero" id="home">
   <div class="hero-noise"></div>
   <div class="hero-glow"></div>
   <div class="hero-grid"></div>
-
   <div style="position:relative;z-index:2;">
     <div class="hero-tag"><div class="live-dot"></div>Available for Projects</div>
     <h1 class="hero-name">TAYYAB<br><span class="grd">ALI</span></h1>
     <div class="hero-role">Video Editor &nbsp;/&nbsp; Motion Designer</div>
-
     <div class="hero-hooks">
       <div class="hook-pill"><span class="hook-ico">📈</span> I <span class="hook-highlight">&nbsp;increase engagement&nbsp;</span></div>
       <div class="hook-pill"><span class="hook-ico">🔁</span> I <span class="hook-highlight">&nbsp;improve retention&nbsp;</span></div>
       <div class="hook-pill"><span class="hook-ico">🚀</span> I make <span class="hook-highlight">&nbsp;viral SaaS edits&nbsp;</span></div>
     </div>
-
     <div class="hero-btns">
       <a href="#work" class="btn-main">&#9654;&nbsp; See My Work</a>
       <a href="#contact" class="btn-out">Hire Me Now &rarr;</a>
     </div>
-
     <div class="hero-stats">
       <div class="hstat"><div class="hstat-n">3+</div><div class="hstat-l">Years Experience</div></div>
       <div class="hstat"><div class="hstat-n">100+</div><div class="hstat-l">Projects Done</div></div>
       <div class="hstat"><div class="hstat-n">100%</div><div class="hstat-l">Client Satisfaction</div></div>
     </div>
+
+    <!-- CINEMATIC FEATURED SHOWCASE -->
+    <div class="featured-showcase">
+      <div class="featured-label">
+        <div class="featured-label-text">&#11088; Featured Work</div>
+        <div class="featured-label-line"></div>
+        <div class="featured-label-text">NextGen Media</div>
+      </div>
+
+      <div class="featured-grid">
+
+        <!-- MAIN BIG VIDEO -->
+        <div class="fv-main" onclick="openVid('TrpWyPv9Gy4', false)">
+          <div class="fv-thumb">
+            <img src="https://img.youtube.com/vi/TrpWyPv9Gy4/maxresdefault.jpg" onerror="this.src='https://img.youtube.com/vi/TrpWyPv9Gy4/hqdefault.jpg'" alt="Featured Edit">
+          </div>
+          <div class="fv-scanline"></div>
+          <div class="fv-overlay"></div>
+          <div class="fv-play">&#9654;</div>
+          <div class="fv-cine-tag"><span class="fv-cine-dot"></span>Featured</div>
+          <div class="fv-info">
+            <div class="fv-badge">&#11088; Latest Edit</div>
+            <div class="fv-title">Watch Featured Edit</div>
+            <div class="fv-desc">Cinematic precision meets fast-paced SaaS storytelling.</div>
+          </div>
+        </div>
+
+        <!-- SIDE VIDEO 1: High Energy Reel -->
+        <div class="fv-side" onclick="openVid('mmYNXylU6es', false)">
+          <div class="fv-thumb">
+            <img src="https://img.youtube.com/vi/mmYNXylU6es/hqdefault.jpg" alt="High Energy Reel">
+          </div>
+          <div class="fv-scanline"></div>
+          <div class="fv-overlay"></div>
+          <div class="fv-play">&#9654;</div>
+          <div class="fv-info">
+            <div class="fv-badge pink">Reel Edit</div>
+            <div class="fv-title">High Energy Reel</div>
+            <div class="fv-desc">Fast-paced, scroll-stopping cuts.</div>
+          </div>
+        </div>
+
+        <!-- SIDE VIDEO 2: Cinematic Showreel Vol.1 -->
+        <div class="fv-side" onclick="openVid('Aq1OT1jy8LU', false)">
+          <div class="fv-thumb">
+            <img src="https://img.youtube.com/vi/Aq1OT1jy8LU/hqdefault.jpg" alt="Cinematic Showreel Vol.1">
+          </div>
+          <div class="fv-scanline"></div>
+          <div class="fv-overlay"></div>
+          <div class="fv-play">&#9654;</div>
+          <div class="fv-info">
+            <div class="fv-badge">Cinematic</div>
+            <div class="fv-title">Cinematic Showreel Vol.1</div>
+            <div class="fv-desc">Color grading &amp; storytelling mastery.</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
   </div>
 </section>
 
-<!-- MARQUEE -->
 <div class="mq-wrap">
   <div class="mq-track">
     <div class="mq-item"><span class="mq-dot"></span>Video Editing</div>
@@ -307,7 +359,6 @@ footer { background:var(--black); border-top:1px solid rgba(255,255,255,.05); pa
   </div>
 </div>
 
-<!-- WORK / PORTFOLIO -->
 <section id="work" class="work-wrap">
   <div class="sec-head rv">
     <div class="sec-n">01</div>
@@ -325,7 +376,7 @@ footer { background:var(--black); border-top:1px solid rgba(255,255,255,.05); pa
 
   <div class="work-grid">
 
-    <div class="wi feat rv" data-cat="cinematic" onclick="openVid('Aq1OT1jy8LU')">
+    <div class="wi feat rv" data-cat="cinematic" onclick="openVid('Aq1OT1jy8LU', false)">
       <div class="wi-thumb">
         <img src="https://img.youtube.com/vi/Aq1OT1jy8LU/hqdefault.jpg" alt="Cinematic Showreel" loading="lazy">
         <div class="wi-overlay"><div class="play-circle">&#9654;</div></div>
@@ -334,11 +385,11 @@ footer { background:var(--black); border-top:1px solid rgba(255,255,255,.05); pa
         <div class="wi-cat">⭐ Featured — Cinematic</div>
         <div class="wi-title">Cinematic Showreel Vol.1</div>
         <div class="wi-desc">Color grading, pacing, and storytelling mastery.</div>
-        <button class="wi-link" onclick="event.stopPropagation();openVid('Aq1OT1jy8LU')">Watch Now →</button>
+        <button class="wi-link" onclick="event.stopPropagation();openVid('Aq1OT1jy8LU', false)">Watch Now →</button>
       </div>
     </div>
 
-    <div class="wi rv" data-cat="reel" onclick="openVid('mmYNXylU6es')">
+    <div class="wi rv" data-cat="reel" onclick="openVid('mmYNXylU6es', false)">
       <div class="wi-thumb">
         <img src="https://img.youtube.com/vi/mmYNXylU6es/hqdefault.jpg" alt="High Energy Reel" loading="lazy">
         <div class="wi-overlay"><div class="play-circle">&#9654;</div></div>
@@ -347,11 +398,11 @@ footer { background:var(--black); border-top:1px solid rgba(255,255,255,.05); pa
         <div class="wi-cat">Reel Edit</div>
         <div class="wi-title">High Energy Reel</div>
         <div class="wi-desc">Fast-paced, scroll-stopping cuts with music sync.</div>
-        <button class="wi-link" onclick="event.stopPropagation();openVid('mmYNXylU6es')">Watch Now →</button>
+        <button class="wi-link" onclick="event.stopPropagation();openVid('mmYNXylU6es', false)">Watch Now →</button>
       </div>
     </div>
 
-    <div class="wi rv" data-cat="brand" onclick="openVid('TsLl54UmB8g')">
+    <div class="wi rv" data-cat="brand" onclick="openVid('TsLl54UmB8g', false)">
       <div class="wi-thumb">
         <img src="https://img.youtube.com/vi/TsLl54UmB8g/hqdefault.jpg" alt="Brand Story" loading="lazy">
         <div class="wi-overlay"><div class="play-circle">&#9654;</div></div>
@@ -360,11 +411,11 @@ footer { background:var(--black); border-top:1px solid rgba(255,255,255,.05); pa
         <div class="wi-cat">Brand Video</div>
         <div class="wi-title">Brand Story Edit</div>
         <div class="wi-desc">Polished transitions and narrative flow.</div>
-        <button class="wi-link" onclick="event.stopPropagation();openVid('TsLl54UmB8g')">Watch Now →</button>
+        <button class="wi-link" onclick="event.stopPropagation();openVid('TsLl54UmB8g', false)">Watch Now →</button>
       </div>
     </div>
 
-    <div class="wi rv" data-cat="motion" onclick="openVid('WuxZziKwFno')">
+    <div class="wi rv" data-cat="motion" onclick="openVid('WuxZziKwFno', false)">
       <div class="wi-thumb">
         <img src="https://img.youtube.com/vi/WuxZziKwFno/hqdefault.jpg" alt="Motion VFX" loading="lazy">
         <div class="wi-overlay"><div class="play-circle">&#9654;</div></div>
@@ -373,11 +424,11 @@ footer { background:var(--black); border-top:1px solid rgba(255,255,255,.05); pa
         <div class="wi-cat">Motion Graphics</div>
         <div class="wi-title">Motion &amp; VFX Edit</div>
         <div class="wi-desc">Kinetic typography blended with live footage.</div>
-        <button class="wi-link" onclick="event.stopPropagation();openVid('WuxZziKwFno')">Watch Now →</button>
+        <button class="wi-link" onclick="event.stopPropagation();openVid('WuxZziKwFno', false)">Watch Now →</button>
       </div>
     </div>
 
-    <div class="wi feat rv" data-cat="cinematic" onclick="openVid('YIizVWAeR3g')">
+    <div class="wi feat rv" data-cat="cinematic" onclick="openVid('YIizVWAeR3g', false)">
       <div class="wi-thumb">
         <img src="https://img.youtube.com/vi/YIizVWAeR3g/hqdefault.jpg" alt="Cinematic Visual" loading="lazy">
         <div class="wi-overlay"><div class="play-circle">&#9654;</div></div>
@@ -386,24 +437,13 @@ footer { background:var(--black); border-top:1px solid rgba(255,255,255,.05); pa
         <div class="wi-cat">Cinematic Edit</div>
         <div class="wi-title">Cinematic Visual Story</div>
         <div class="wi-desc">Dramatic edit with professional color science and sound design.</div>
-        <button class="wi-link" onclick="event.stopPropagation();openVid('YIizVWAeR3g')">Watch Now →</button>
+        <button class="wi-link" onclick="event.stopPropagation();openVid('YIizVWAeR3g', false)">Watch Now →</button>
       </div>
     </div>
 
-    <div class="wi rv" data-cat="reel" onclick="openVid('Z0JSLdoLEho')">
-      <div class="wi-thumb">
-        <img src="https://img.youtube.com/vi/Z0JSLdoLEho/hqdefault.jpg" alt="Social Reel" loading="lazy">
-        <div class="wi-overlay"><div class="play-circle">&#9654;</div></div>
-      </div>
-      <div class="wi-info">
-        <div class="wi-cat">Reel Edit</div>
-        <div class="wi-title">Social Media Reel</div>
-        <div class="wi-desc">Viral-ready content for maximum retention.</div>
-        <button class="wi-link" onclick="event.stopPropagation();openVid('Z0JSLdoLEho')">Watch Now →</button>
-      </div>
-    </div>
 
-    <div class="wi rv" data-cat="brand" onclick="openVid('QrOV_0RVG8M')">
+
+    <div class="wi rv" data-cat="brand" onclick="openVid('QrOV_0RVG8M', false)">
       <div class="wi-thumb">
         <img src="https://img.youtube.com/vi/QrOV_0RVG8M/hqdefault.jpg" alt="Product Showcase" loading="lazy">
         <div class="wi-overlay"><div class="play-circle">&#9654;</div></div>
@@ -412,11 +452,11 @@ footer { background:var(--black); border-top:1px solid rgba(255,255,255,.05); pa
         <div class="wi-cat">Brand Video</div>
         <div class="wi-title">Product Showcase</div>
         <div class="wi-desc">Sleek product video with professional color work.</div>
-        <button class="wi-link" onclick="event.stopPropagation();openVid('QrOV_0RVG8M')">Watch Now →</button>
+        <button class="wi-link" onclick="event.stopPropagation();openVid('QrOV_0RVG8M', false)">Watch Now →</button>
       </div>
     </div>
 
-    <div class="wi rv" data-cat="motion" onclick="openVid('0W7vllYxCSY')">
+    <div class="wi rv" data-cat="motion" onclick="openVid('0W7vllYxCSY', false)">
       <div class="wi-thumb">
         <img src="https://img.youtube.com/vi/0W7vllYxCSY/hqdefault.jpg" alt="Dynamic Motion" loading="lazy">
         <div class="wi-overlay"><div class="play-circle">&#9654;</div></div>
@@ -425,11 +465,11 @@ footer { background:var(--black); border-top:1px solid rgba(255,255,255,.05); pa
         <div class="wi-cat">Motion Edit</div>
         <div class="wi-title">Dynamic Motion Cut</div>
         <div class="wi-desc">Beat-synced cuts with high-impact visual effects.</div>
-        <button class="wi-link" onclick="event.stopPropagation();openVid('0W7vllYxCSY')">Watch Now →</button>
+        <button class="wi-link" onclick="event.stopPropagation();openVid('0W7vllYxCSY', false)">Watch Now →</button>
       </div>
     </div>
 
-    <div class="wi rv" data-cat="cinematic" onclick="openVid('JRwH81vX0fs')">
+    <div class="wi rv" data-cat="cinematic" onclick="openVid('JRwH81vX0fs', false)">
       <div class="wi-thumb">
         <img src="https://img.youtube.com/vi/JRwH81vX0fs/hqdefault.jpg" alt="Cinematic Atmosphere" loading="lazy">
         <div class="wi-overlay"><div class="play-circle">&#9654;</div></div>
@@ -438,29 +478,32 @@ footer { background:var(--black); border-top:1px solid rgba(255,255,255,.05); pa
         <div class="wi-cat">Cinematic</div>
         <div class="wi-title">Cinematic Atmosphere</div>
         <div class="wi-desc">Moody atmospheric edit with rich color grading.</div>
-        <button class="wi-link" onclick="event.stopPropagation();openVid('JRwH81vX0fs')">Watch Now →</button>
+        <button class="wi-link" onclick="event.stopPropagation();openVid('JRwH81vX0fs', false)">Watch Now →</button>
       </div>
     </div>
 
-    <div class="wi feat rv" data-cat="reel" onclick="openVid('NRll-BpJsWk')">
+    <!-- NEW: YouTube Short -->
+    <div class="wi rv" data-cat="reel" onclick="openVid('Om80ZXFxD1M', true)">
       <div class="wi-thumb">
-        <img src="https://img.youtube.com/vi/NRll-BpJsWk/hqdefault.jpg" alt="Latest Showreel" loading="lazy">
+        <img src="https://img.youtube.com/vi/Om80ZXFxD1M/hqdefault.jpg" alt="YouTube Short" loading="lazy">
         <div class="wi-overlay"><div class="play-circle">&#9654;</div></div>
       </div>
       <div class="wi-info">
-        <div class="wi-cat">⭐ Latest — 2025</div>
-        <div class="wi-title">Latest Showreel 2025</div>
-        <div class="wi-desc">The best of NextGen Media's creative output in 2025.</div>
-        <button class="wi-link" onclick="event.stopPropagation();openVid('NRll-BpJsWk')">Watch Now →</button>
+        <div class="wi-cat">Reel Edit <span class="shorts-badge">▶ SHORT</span></div>
+        <div class="wi-title">YouTube Short</div>
+        <div class="wi-desc">Vertical short-form edit optimized for maximum retention.</div>
+        <button class="wi-link" onclick="event.stopPropagation();openVid('Om80ZXFxD1M', true)">Watch Now →</button>
       </div>
     </div>
+
+
 
   </div>
 </section>
 
 <!-- VIDEO MODAL -->
 <div class="modal" id="vidModal">
-  <div class="modal-box">
+  <div class="modal-box" id="modalBox">
     <button class="modal-x" id="mClose">✕</button>
     <div class="modal-frame">
       <iframe id="mFrame" src="" allowfullscreen allow="autoplay; encrypted-media"></iframe>
@@ -476,64 +519,44 @@ footer { background:var(--black); border-top:1px solid rgba(255,255,255,.05); pa
     <div class="sec-line"></div>
   </div>
   <div class="testi-grid">
-
     <div class="testi-card rv">
       <div class="testi-stars"><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span></div>
       <p class="testi-text">"Tayyab completely transformed our brand videos. The pacing, color work, and energy in every edit is on another level. Our engagement went up 3x after working with him."</p>
       <div class="testi-author">
         <div class="testi-avatar">S</div>
-        <div>
-          <div class="testi-name">VEX </div>
-          <div class="testi-role">Brand Strategist, AUS</div>
-        </div>
+        <div><div class="testi-name">VEX</div><div class="testi-role">Brand Strategist, AUS</div></div>
       </div>
     </div>
-
     <div class="testi-card rv">
       <div class="testi-stars"><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span></div>
       <p class="testi-text">"Man your work is W! Delivered ahead of deadline with zero revisions needed. If you want a video editor who actually understands retention — this is your guy."</p>
       <div class="testi-author">
         <div class="testi-avatar">A</div>
-        <div>
-          <div class="testi-name">Ibrahim Alameddine </div>
-          <div class="testi-role">Marketing Agency, AUS</div>
-        </div>
+        <div><div class="testi-name">Ibrahim Alameddine</div><div class="testi-role">Marketing Agency, AUS</div></div>
       </div>
     </div>
-
     <div class="testi-card rv">
       <div class="testi-stars"><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span></div>
-      <p class="testi-text">"Working with this team changed the game for our social presence. We used to struggle with getting our seasonal drops edited in time, but now our Reels and TikToks are polished, punchy, and actually converting. The attention to detail—especially the sound design and pacing—is something you just don't get with standard editors. They don't just cut clips; they tell the story of our brand."</p>
+      <p class="testi-text">"Working with this team changed the game for our social presence. We used to struggle with getting our seasonal drops edited in time, but now our Reels and TikToks are polished, punchy, and actually converting. The attention to detail—especially the sound design and pacing—is something you just don't get with standard editors."</p>
       <div class="testi-author">
         <div class="testi-avatar">R</div>
-        <div>
-          <div class="testi-name">Sarthak Rastogi</div>
-          <div class="testi-role">Clothing Brand Founder, IND</div>
-        </div>
+        <div><div class="testi-name">Sarthak Rastogi</div><div class="testi-role">Clothing Brand Founder, IND</div></div>
       </div>
     </div>
-
     <div class="testi-card rv">
       <div class="testi-stars"><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span></div>
       <p class="testi-text">"The pacing is professional, the color grading is spot-on for our brand, and the final edits have been instrumental in our presentations to Tier 1 builders. Truly a creative partner who understands the premium nature of the construction and design industry."</p>
       <div class="testi-author">
         <div class="testi-avatar">A</div>
-        <div>
-          <div class="testi-name">Director, AB Con Design </div>
-          <div class="testi-role">Construction Company, AUS</div>
-        </div>
+        <div><div class="testi-name">Director, AB Con Design</div><div class="testi-role">Construction Company, AUS</div></div>
       </div>
     </div>
-    
     <div class="testi-card rv">
       <div class="testi-stars"><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span></div>
-      <p class="testi-text">"They truly understand our brand's mission, ensuring every edit is respectful, polished, and high-quality. The addition of clean captions and thoughtful pacing has significantly helped us build trust with our clients. A highly reliable partner for any professional service provide."</p>
+      <p class="testi-text">"They truly understand our brand's mission, ensuring every edit is respectful, polished, and high-quality. The addition of clean captions and thoughtful pacing has significantly helped us build trust with our clients. A highly reliable partner for any professional service provider."</p>
       <div class="testi-author">
         <div class="testi-avatar">R</div>
-        <div>
-          <div class="testi-name">Management Team,Wills & Estates</div>
-          <div class="testi-role">Law Firm, AUS</div>
-        </div>
+        <div><div class="testi-name">Management Team, Wills &amp; Estates</div><div class="testi-role">Law Firm, AUS</div></div>
       </div>
     </div>
   </div>
@@ -591,7 +614,7 @@ footer { background:var(--black); border-top:1px solid rgba(255,255,255,.05); pa
       <h2>LET'S CREATE<br><span>SOMETHING</span><br>EPIC</h2>
       <p>Have a project in mind? Let's bring your vision to life with cinematic precision and creative excellence.</p>
       <div class="ct-links">
-        <a href="mailto:nextgenmediaconnect@gmail.com" class="ct-link"><div class="ct-ico"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M24 5.457v13.909c0 .904-.732 1.636-1.636 1.636h-3.819V11.73L12 16.64l-6.545-4.91v9.273H1.636A1.636 1.636 0 0 1 0 19.366V5.457c0-2.023 2.309-3.178 3.927-1.964L5.455 4.64 12 9.548l6.545-4.91 1.528-1.145C21.69 2.28 24 3.434 24 5.457z" fill="#EA4335"/><path d="M0 5.457c0-2.023 2.309-3.178 3.927-1.964L5.455 4.64 12 9.548V16.64L5.455 11.73 0 15.64V5.457z" fill="#34A853"/><path d="M18.545 4.64L12 9.548v7.091l6.545-4.909V4.64z" fill="#FBBC05"/><path d="M24 5.457v10.182l-5.455 4.91V4.638l1.528-1.145C21.69 2.28 24 3.434 24 5.457z" fill="#4285F4"/></svg></div><div><div class="ct-label">Email</div><div class="ct-val">nextgenmediaconnect@gmail.com</div></div></a>
+        <a href="mailto:nextgenmediaconnect@gmail.com" class="ct-link"><div class="ct-ico"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M24 5.457v13.909c0 .904-.732 1.636-1.636 1.636h-3.819V11.73L12 16.64l-6.545-4.91v9.273H1.636A1.636 1.636 0 0 1 0 19.366V5.457c0-2.023 2.309-3.178 3.927-1.964L5.455 4.64 12 9.548l6.545-4.91 1.528-1.145C21.69 2.28 24 3.434 24 5.457z" fill="#EA4335"/></svg></div><div><div class="ct-label">Email</div><div class="ct-val">nextgenmediaconnect@gmail.com</div></div></a>
         <a href="https://www.instagram.com/nextgenmedia_official/" target="_blank" class="ct-link"><div class="ct-ico"><svg width="22" height="22" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><defs><radialGradient id="ig1" cx="30%" cy="107%" r="150%"><stop offset="0%" stop-color="#fdf497"/><stop offset="5%" stop-color="#fdf497"/><stop offset="45%" stop-color="#fd5949"/><stop offset="60%" stop-color="#d6249f"/><stop offset="90%" stop-color="#285AEB"/></radialGradient></defs><rect width="24" height="24" rx="5" fill="url(#ig1)"/><path d="M12 7.5a4.5 4.5 0 1 0 0 9 4.5 4.5 0 0 0 0-9zm0 7.4a2.9 2.9 0 1 1 0-5.8 2.9 2.9 0 0 1 0 5.8z" fill="#fff"/><circle cx="17.2" cy="6.8" r="1.1" fill="#fff"/></svg></div><div><div class="ct-label">Instagram</div><div class="ct-val">@nextgenmedia_official</div></div></a>
         <a href="https://www.linkedin.com/in/tayyab-ali-577997393/" target="_blank" class="ct-link"><div class="ct-ico"><svg width="22" height="22" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><rect width="24" height="24" rx="4" fill="#0A66C2"/><path d="M7.5 9.5h-3v9h3v-9zm-1.5-1a1.75 1.75 0 1 0 0-3.5 1.75 1.75 0 0 0 0 3.5zm12.5 1c-1.7 0-2.7.9-3 1.5v-1.5h-3v9h3v-4.8c0-1.4.7-2.2 2-2.2 1.2 0 1.7.8 1.7 2.2v4.8h3v-5.5c0-2.5-1.3-3.5-3.7-3.5z" fill="#fff"/></svg></div><div><div class="ct-label">LinkedIn</div><div class="ct-val">Tayyab Ali</div></div></a>
         <a href="https://x.com/Nextgenmedia99" target="_blank" class="ct-link"><div class="ct-ico"><svg width="22" height="22" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><rect width="24" height="24" rx="4" fill="#000"/><path d="M17.75 4h-2.6l-3.4 4.5L8.4 4H3.5l5.8 7.8L3.5 20H6l3.7-4.9 3.8 4.9h5l-6-8.1L17.75 4z" fill="#fff"/></svg></div><div><div class="ct-label">X (Twitter)</div><div class="ct-val">@Nextgenmedia99</div></div></a>
@@ -607,7 +630,6 @@ footer { background:var(--black); border-top:1px solid rgba(255,255,255,.05); pa
   </div>
 </section>
 
-<!-- FOOTER -->
 <footer>
   <div class="f-logo">NEXTGEN MEDIA</div>
   <div class="f-copy">&copy; 2025 Tayyab Ali. All rights reserved.</div>
@@ -631,9 +653,20 @@ document.querySelectorAll('a,button,.wi').forEach(function(el){el.addEventListen
 var obs=new IntersectionObserver(function(entries){entries.forEach(function(en,i){if(en.isIntersecting){setTimeout(function(){en.target.classList.add('vis');},i*70);obs.unobserve(en.target);}});},{threshold:0.07});
 document.querySelectorAll('.rv').forEach(function(el){obs.observe(el);});
 
-/* VIDEO MODAL */
-var modal=document.getElementById('vidModal'),mFrame=document.getElementById('mFrame'),mClose=document.getElementById('mClose');
-function openVid(id){mFrame.setAttribute('src','https://www.youtube.com/embed/'+id+'?autoplay=1&rel=0&modestbranding=1');modal.classList.add('show');document.body.style.overflow='hidden';}
+/* VIDEO MODAL — supports Shorts (vertical) */
+var modal=document.getElementById('vidModal'),mFrame=document.getElementById('mFrame'),mClose=document.getElementById('mClose'),modalBox=document.getElementById('modalBox');
+function openVid(id, isShort){
+  if(isShort){
+    modalBox.classList.add('shorts-mode');
+    modalBox.style.maxWidth='360px';
+  } else {
+    modalBox.classList.remove('shorts-mode');
+    modalBox.style.maxWidth='980px';
+  }
+  mFrame.setAttribute('src','https://www.youtube.com/embed/'+id+'?autoplay=1&rel=0&modestbranding=1');
+  modal.classList.add('show');
+  document.body.style.overflow='hidden';
+}
 function closeVid(){modal.classList.remove('show');mFrame.setAttribute('src','');document.body.style.overflow='';}
 mClose.addEventListener('click',closeVid);
 modal.addEventListener('click',function(e){if(e.target===modal)closeVid();});
