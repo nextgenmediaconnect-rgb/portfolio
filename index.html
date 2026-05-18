@@ -141,27 +141,8 @@ nav {
 .mq-item { display:flex; align-items:center; gap:20px; padding:0 32px; font-size:11px; letter-spacing:3px; text-transform:uppercase; color:var(--muted); font-weight:600; white-space:nowrap; }
 .mq-dot { width:4px; height:4px; border-radius:50%; background:var(--p2); flex-shrink:0; }
 
-/* VSL CARD — same style as .wi portfolio cards */
+/* VSL CARD — exact same style as .wi portfolio cards */
 .vsl-wrap { background: var(--black); }
-.vsl-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:16px; }
-.vsl-card {
-  grid-column: span 3;
-  background: var(--card);
-  border: 1px solid rgba(255,255,255,.05);
-  overflow: hidden;
-  transition: transform .4s, border-color .4s, box-shadow .4s;
-}
-.vsl-card:hover { transform:translateY(-6px); border-color:rgba(155,93,229,.35); box-shadow:0 24px 60px rgba(0,0,0,.6); }
-.vsl-embed-wrap { position:relative; width:100%; padding-top:56.25%; background:#0a0a0c; overflow:hidden; }
-.vsl-embed-wrap iframe { position:absolute; inset:0; width:100%; height:100%; border:none; display:block; }
-.vsl-card-info { padding:16px 20px 20px; }
-.vsl-card-info::before { content:''; display:block; height:1px; margin-bottom:14px; background:linear-gradient(to right,rgba(155,93,229,.4),transparent); }
-.vsl-card-cat { font-size:9px; letter-spacing:2.5px; text-transform:uppercase; color:var(--p2); font-weight:700; margin-bottom:4px; }
-.vsl-card-title { font-family:'Syne',sans-serif; font-size:15px; font-weight:700; letter-spacing:.5px; text-transform:uppercase; margin-bottom:5px; }
-.vsl-card-desc { font-size:12px; color:var(--muted); font-weight:400; line-height:1.65; }
-.vsl-card-link { display:inline-flex; align-items:center; gap:7px; margin-top:10px; font-size:11px; letter-spacing:2px; text-transform:uppercase; font-weight:600; color:var(--p1); text-decoration:none; transition:gap .3s,color .3s; }
-.vsl-card-link:hover { gap:12px; color:var(--p2); }
-@media(max-width:900px){ .vsl-grid { grid-template-columns:1fr; } .vsl-card { grid-column:span 1; } }
 
 section { padding:90px 60px; }
 .sec-head { display:flex; align-items:flex-end; gap:18px; margin-bottom:56px; }
@@ -314,7 +295,7 @@ footer { background:var(--black); border-top:1px solid rgba(255,255,255,.05); pa
   .about-mini-grid { grid-template-columns:1fr !important; }
   .about-img-outer { max-width:100%; }
   .about-img-inner img { height:360px; }
-  .vsl-grid { grid-template-columns:1fr; } .vsl-card { grid-column:span 1; }
+  
 }
 </style>
 </head>
@@ -465,21 +446,17 @@ footer { background:var(--black); border-top:1px solid rgba(255,255,255,.05); pa
     <div><div class="sec-eye">Video Sales Letter</div><div class="sec-title">WATCH MY VSL</div></div>
     <div class="sec-line"></div>
   </div>
-  <div class="vsl-grid">
-    <div class="vsl-card rv">
-      <div class="vsl-embed-wrap">
-        <iframe
-          src="https://www.youtube.com/embed/Z15q-LUKAOk?rel=0&modestbranding=1&vq=hd1080&hd=1"
-          allowfullscreen
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-          title="NextGen Media VSL — Tayyab Ali"
-        ></iframe>
+  <div class="work-grid">
+    <div class="wi feat rv" onclick="openVid('Z15q-LUKAOk', false)">
+      <div class="wi-thumb">
+        <img src="https://img.youtube.com/vi/Z15q-LUKAOk/maxresdefault.jpg" onerror="this.src='https://img.youtube.com/vi/Z15q-LUKAOk/hqdefault.jpg'" alt="NextGen Media VSL" loading="lazy">
+        <div class="wi-overlay"><div class="play-circle">&#9654;</div></div>
       </div>
-      <div class="vsl-card-info">
-        <div class="vsl-card-cat">⭐ Must Watch — VSL</div>
-        <div class="vsl-card-title">Why Brands Choose NextGen Media</div>
-        <div class="vsl-card-desc">Watch this before reaching out. This video breaks down my editing process, results, and exactly what makes my work convert.</div>
-        <a href="#contact" class="vsl-card-link">Work With Me →</a>
+      <div class="wi-info">
+        <div class="wi-cat">⭐ Must Watch — VSL</div>
+        <div class="wi-title">Why Brands Choose NextGen Media</div>
+        <div class="wi-desc">Watch this before reaching out. My editing process, results, and exactly what makes my work convert.</div>
+        <button class="wi-link" onclick="event.stopPropagation();openVid('Z15q-LUKAOk', false)">Watch Now →</button>
       </div>
     </div>
   </div>
