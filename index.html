@@ -75,7 +75,6 @@ nav {
 .hero-photo-wrap { display:flex; justify-content:flex-end; align-items:center; position:relative; }
 .hero-photo-outer { position:relative; width:380px; flex-shrink:0; }
 
-/* Animated gradient border */
 .hero-photo-outer::before {
   content:''; position:absolute; inset:-3px; z-index:0;
   background:linear-gradient(135deg, #9B5DE5, #F15BB5, #9B5DE5);
@@ -86,19 +85,15 @@ nav {
 .hero-photo-inner img { width:100%; height:520px; object-fit:cover; object-position:top center; display:block; filter:saturate(0.95) contrast(1.05); transition:transform .6s; }
 .hero-photo-outer:hover .hero-photo-inner img { transform:scale(1.03); }
 
-/* Overlays */
 .hero-photo-overlay { position:absolute; inset:0; z-index:2; background:linear-gradient(to top, rgba(6,6,8,.7) 0%, transparent 50%); pointer-events:none; }
 .hero-photo-scanline { position:absolute; inset:0; z-index:3; background:repeating-linear-gradient(0deg, transparent, transparent 3px, rgba(0,0,0,.04) 3px, rgba(0,0,0,.04) 6px); pointer-events:none; }
 
-/* Bottom badge */
 .hero-photo-badge { position:absolute; bottom:20px; left:50%; transform:translateX(-50%); z-index:4; display:flex; align-items:center; gap:8px; background:rgba(0,0,0,.7); border:1px solid rgba(155,93,229,.35); backdrop-filter:blur(10px); padding:8px 16px; white-space:nowrap; font-size:9px; letter-spacing:2px; text-transform:uppercase; color:rgba(255,255,255,.6); font-weight:600; }
 .hero-photo-badge-dot { width:5px; height:5px; border-radius:50%; background:var(--p2); animation:pulse 2s ease infinite; flex-shrink:0; }
 
-/* Decorative rings */
 .hero-photo-ring1 { position:absolute; top:-20px; right:-20px; width:80px; height:80px; border-radius:50%; border:1px solid rgba(155,93,229,.2); z-index:5; }
 .hero-photo-ring2 { position:absolute; top:-8px; right:-8px; width:56px; height:56px; border-radius:50%; border:1px solid rgba(241,91,181,.25); z-index:5; }
 
-/* Responsive hero */
 @media(max-width:1100px){ .hero-inner { grid-template-columns:1fr 340px; gap:40px; } .hero-photo-outer { width:320px; } .hero-photo-inner img { height:440px; } }
 
 /* FEATURED SHOWCASE */
@@ -109,21 +104,18 @@ nav {
 
 .featured-grid { display:grid; grid-template-columns:1.7fr 1fr; grid-template-rows:auto auto; gap:10px; max-width:860px; }
 
-/* Main big card */
 .fv-main { grid-row: span 2; position:relative; overflow:hidden; cursor:pointer; background:#0a0a0c; border:1px solid rgba(155,93,229,.15); transition:border-color .4s, box-shadow .4s; }
 .fv-main:hover { border-color:rgba(155,93,229,.55); box-shadow:0 30px 80px rgba(155,93,229,.2); }
 .fv-main .fv-thumb { position:relative; width:100%; height:100%; min-height:260px; }
 .fv-main .fv-thumb img { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; transition:transform .6s, opacity .4s; opacity:.75; }
 .fv-main:hover .fv-thumb img { transform:scale(1.05); opacity:.4; }
 
-/* Small side cards */
 .fv-side { position:relative; overflow:hidden; cursor:pointer; background:#0a0a0c; border:1px solid rgba(155,93,229,.1); transition:border-color .4s, box-shadow .4s; }
 .fv-side:hover { border-color:rgba(241,91,181,.5); box-shadow:0 20px 50px rgba(241,91,181,.15); }
 .fv-side .fv-thumb { position:relative; width:100%; padding-top:56.25%; }
 .fv-side .fv-thumb img { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; transition:transform .5s, opacity .4s; opacity:.7; }
 .fv-side:hover .fv-thumb img { transform:scale(1.06); opacity:.35; }
 
-/* Shared overlay */
 .fv-overlay { position:absolute; inset:0; background:linear-gradient(to top, rgba(0,0,0,.88) 0%, rgba(0,0,0,.2) 50%, transparent 100%); pointer-events:none; }
 .fv-play { position:absolute; top:50%; left:50%; transform:translate(-50%,-50%) scale(.75); width:56px; height:56px; border-radius:50%; background:var(--grad); display:flex; align-items:center; justify-content:center; font-size:18px; color:#fff; box-shadow:0 0 40px rgba(155,93,229,.5); transition:transform .3s, box-shadow .3s; }
 .fv-main .fv-play { width:68px; height:68px; font-size:22px; }
@@ -139,11 +131,7 @@ nav {
 .fv-main .fv-desc { font-size:12px; }
 .fv-cine-tag { position:absolute; top:14px; right:14px; display:flex; align-items:center; gap:6px; background:rgba(0,0,0,.6); border:1px solid rgba(255,255,255,.1); backdrop-filter:blur(8px); padding:5px 10px; font-size:9px; letter-spacing:2px; text-transform:uppercase; color:rgba(255,255,255,.6); font-weight:600; }
 .fv-cine-dot { width:5px; height:5px; border-radius:50%; background:var(--p2); animation:pulse 2s ease infinite; }
-
-/* Cinematic scan line effect */
 .fv-scanline { position:absolute; inset:0; pointer-events:none; background:repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(0,0,0,.03) 2px, rgba(0,0,0,.03) 4px); opacity:.4; }
-
-/* Glow borders on hover */
 .fv-main::after { content:''; position:absolute; inset:0; border:1px solid rgba(155,93,229,0); transition:border-color .4s; pointer-events:none; }
 .fv-main:hover::after { border-color:rgba(155,93,229,.4); }
 
@@ -152,6 +140,28 @@ nav {
 @keyframes mq { from{transform:translateX(0)} to{transform:translateX(-50%)} }
 .mq-item { display:flex; align-items:center; gap:20px; padding:0 32px; font-size:11px; letter-spacing:3px; text-transform:uppercase; color:var(--muted); font-weight:600; white-space:nowrap; }
 .mq-dot { width:4px; height:4px; border-radius:50%; background:var(--p2); flex-shrink:0; }
+
+/* VSL CARD — same style as .wi portfolio cards */
+.vsl-wrap { background: var(--black); }
+.vsl-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:16px; }
+.vsl-card {
+  grid-column: span 3;
+  background: var(--card);
+  border: 1px solid rgba(255,255,255,.05);
+  overflow: hidden;
+  transition: transform .4s, border-color .4s, box-shadow .4s;
+}
+.vsl-card:hover { transform:translateY(-6px); border-color:rgba(155,93,229,.35); box-shadow:0 24px 60px rgba(0,0,0,.6); }
+.vsl-embed-wrap { position:relative; width:100%; padding-top:56.25%; background:#0a0a0c; overflow:hidden; }
+.vsl-embed-wrap iframe { position:absolute; inset:0; width:100%; height:100%; border:none; display:block; }
+.vsl-card-info { padding:16px 20px 20px; }
+.vsl-card-info::before { content:''; display:block; height:1px; margin-bottom:14px; background:linear-gradient(to right,rgba(155,93,229,.4),transparent); }
+.vsl-card-cat { font-size:9px; letter-spacing:2.5px; text-transform:uppercase; color:var(--p2); font-weight:700; margin-bottom:4px; }
+.vsl-card-title { font-family:'Syne',sans-serif; font-size:15px; font-weight:700; letter-spacing:.5px; text-transform:uppercase; margin-bottom:5px; }
+.vsl-card-desc { font-size:12px; color:var(--muted); font-weight:400; line-height:1.65; }
+.vsl-card-link { display:inline-flex; align-items:center; gap:7px; margin-top:10px; font-size:11px; letter-spacing:2px; text-transform:uppercase; font-weight:600; color:var(--p1); text-decoration:none; transition:gap .3s,color .3s; }
+.vsl-card-link:hover { gap:12px; color:var(--p2); }
+@media(max-width:900px){ .vsl-grid { grid-template-columns:1fr; } .vsl-card { grid-column:span 1; } }
 
 section { padding:90px 60px; }
 .sec-head { display:flex; align-items:flex-end; gap:18px; margin-bottom:56px; }
@@ -184,7 +194,6 @@ section { padding:90px 60px; }
 .wi-link { display:inline-flex; align-items:center; gap:7px; margin-top:10px; font-size:11px; letter-spacing:2px; text-transform:uppercase; font-weight:600; color:var(--p1); background:none; border:none; cursor:pointer; padding:0; transition:gap .3s,color .3s; }
 .wi-link:hover { gap:12px; color:var(--p2); }
 
-/* Shorts badge */
 .shorts-badge { display:inline-flex; align-items:center; gap:5px; background:rgba(255,0,0,.15); border:1px solid rgba(255,0,0,.3); color:#ff4444; font-size:9px; letter-spacing:1.5px; text-transform:uppercase; font-weight:700; padding:3px 8px; margin-left:8px; vertical-align:middle; }
 
 .modal { position:fixed; inset:0; z-index:500; background:rgba(0,0,0,.94); backdrop-filter:blur(16px); display:flex; align-items:center; justify-content:center; opacity:0; pointer-events:none; transition:opacity .3s; }
@@ -195,7 +204,6 @@ section { padding:90px 60px; }
 .modal-x:hover { background:var(--p1); }
 .modal-frame { position:relative; padding-top:56.25%; background:#000; }
 .modal-frame iframe { position:absolute; inset:0; width:100%; height:100%; border:none; }
-/* Shorts modal uses vertical aspect ratio */
 .modal-box.shorts-mode .modal-frame { padding-top:0; height:80vh; max-height:640px; }
 
 .testi-wrap { background:var(--dark); }
@@ -214,7 +222,6 @@ section { padding:90px 60px; }
 .about-mini { background:var(--black); }
 .about-mini-grid { display:grid; grid-template-columns:1fr 1fr; gap:60px; align-items:center; }
 
-/* ABOUT IMAGE */
 .about-img-wrap { position:relative; }
 .about-img-outer { position:relative; display:inline-block; width:100%; max-width:420px; }
 .about-img-outer::before {
@@ -238,7 +245,6 @@ section { padding:90px 60px; }
 .about-img-badge-role { font-size:9px; letter-spacing:2.5px; text-transform:uppercase; color:rgba(255,255,255,.5); font-weight:600; margin-top:4px; }
 .about-img-corner { position:absolute; top:14px; right:14px; z-index:4; display:flex; align-items:center; gap:6px; background:rgba(0,0,0,.6); border:1px solid rgba(255,255,255,.1); backdrop-filter:blur(8px); padding:6px 12px; font-size:9px; letter-spacing:2px; text-transform:uppercase; color:rgba(255,255,255,.5); font-weight:600; }
 .about-img-dot { width:5px; height:5px; border-radius:50%; background:var(--p2); animation:pulse 2s ease infinite; }
-/* Decorative lines */
 .about-deco-line { position:absolute; width:40px; height:2px; background:var(--grad); }
 .about-deco-line.tl { top:-12px; left:0; }
 .about-deco-line.br { bottom:-12px; right:0; }
@@ -308,6 +314,7 @@ footer { background:var(--black); border-top:1px solid rgba(255,255,255,.05); pa
   .about-mini-grid { grid-template-columns:1fr !important; }
   .about-img-outer { max-width:100%; }
   .about-img-inner img { height:360px; }
+  .vsl-grid { grid-template-columns:1fr; } .vsl-card { grid-column:span 1; }
 }
 </style>
 </head>
@@ -319,6 +326,7 @@ footer { background:var(--black); border-top:1px solid rgba(255,255,255,.05); pa
 <nav>
   <div class="nav-logo">NEXTGEN MEDIA</div>
   <ul class="nav-links">
+    <li><a href="#vsl">VSL</a></li>
     <li><a href="#work">Portfolio</a></li>
     <li><a href="#testimonials">Reviews</a></li>
     <li><a href="#about">About</a></li>
@@ -333,7 +341,6 @@ footer { background:var(--black); border-top:1px solid rgba(255,255,255,.05); pa
   <div class="hero-grid"></div>
   <div class="hero-inner">
 
-    <!-- LEFT: TEXT -->
     <div class="hero-left">
       <div class="hero-tag"><div class="live-dot"></div>Available for Projects</div>
       <h1 class="hero-name">TAYYAB<br><span class="grd">ALI</span></h1>
@@ -344,7 +351,7 @@ footer { background:var(--black); border-top:1px solid rgba(255,255,255,.05); pa
         <div class="hook-pill"><span class="hook-ico">🚀</span> I make <span class="hook-highlight">&nbsp;viral SaaS edits&nbsp;</span></div>
       </div>
       <div class="hero-btns">
-        <a href="#work" class="btn-main">&#9654;&nbsp; See My Work</a>
+        <a href="#vsl" class="btn-main">&#9654;&nbsp; Watch My VSL</a>
         <a href="#contact" class="btn-out">Hire Me Now &rarr;</a>
       </div>
       <div class="hero-stats">
@@ -354,7 +361,6 @@ footer { background:var(--black); border-top:1px solid rgba(255,255,255,.05); pa
       </div>
     </div>
 
-    <!-- RIGHT: CINEMATIC PHOTO -->
     <div class="hero-photo-wrap">
       <div class="hero-photo-outer">
         <div class="hero-photo-ring1"></div>
@@ -373,7 +379,6 @@ footer { background:var(--black); border-top:1px solid rgba(255,255,255,.05); pa
 
   </div>
 
-    <!-- CINEMATIC FEATURED SHOWCASE -->
     <div class="featured-showcase">
       <div class="featured-label">
         <div class="featured-label-text">&#11088; Featured Work</div>
@@ -383,7 +388,6 @@ footer { background:var(--black); border-top:1px solid rgba(255,255,255,.05); pa
 
       <div class="featured-grid">
 
-        <!-- MAIN BIG VIDEO -->
         <div class="fv-main" onclick="openVid('TrpWyPv9Gy4', false)">
           <div class="fv-thumb">
             <img src="https://img.youtube.com/vi/TrpWyPv9Gy4/maxresdefault.jpg" onerror="this.src='https://img.youtube.com/vi/TrpWyPv9Gy4/hqdefault.jpg'" alt="Featured Edit">
@@ -399,10 +403,9 @@ footer { background:var(--black); border-top:1px solid rgba(255,255,255,.05); pa
           </div>
         </div>
 
-        <!-- SIDE VIDEO 1: High Energy Reel -->
         <div class="fv-side" onclick="openVid('mmYNXylU6es', false)">
           <div class="fv-thumb">
-            <img src="https://img.youtube.com/vi/mmYNXylU6es/hqdefault.jpg" alt="High Energy Reel">
+            <img src="https://img.youtube.com/vi/mmYNXylU6es/maxresdefault.jpg" onerror="this.src='https://img.youtube.com/vi/mmYNXylU6es/hqdefault.jpg'" alt="High Energy Reel">
           </div>
           <div class="fv-scanline"></div>
           <div class="fv-overlay"></div>
@@ -414,10 +417,9 @@ footer { background:var(--black); border-top:1px solid rgba(255,255,255,.05); pa
           </div>
         </div>
 
-        <!-- SIDE VIDEO 2: Cinematic Showreel Vol.1 -->
         <div class="fv-side" onclick="openVid('Aq1OT1jy8LU', false)">
           <div class="fv-thumb">
-            <img src="https://img.youtube.com/vi/Aq1OT1jy8LU/hqdefault.jpg" alt="Cinematic Showreel Vol.1">
+            <img src="https://img.youtube.com/vi/Aq1OT1jy8LU/maxresdefault.jpg" onerror="this.src='https://img.youtube.com/vi/Aq1OT1jy8LU/hqdefault.jpg'" alt="Cinematic Showreel Vol.1">
           </div>
           <div class="fv-scanline"></div>
           <div class="fv-overlay"></div>
@@ -456,6 +458,34 @@ footer { background:var(--black); border-top:1px solid rgba(255,255,255,.05); pa
   </div>
 </div>
 
+<!-- VSL SECTION -->
+<section id="vsl" class="vsl-wrap">
+  <div class="sec-head rv">
+    <div class="sec-n">00</div>
+    <div><div class="sec-eye">Video Sales Letter</div><div class="sec-title">WATCH MY VSL</div></div>
+    <div class="sec-line"></div>
+  </div>
+  <div class="vsl-grid">
+    <div class="vsl-card rv">
+      <div class="vsl-embed-wrap">
+        <iframe
+          src="https://www.youtube.com/embed/Z15q-LUKAOk?rel=0&modestbranding=1&vq=hd1080&hd=1"
+          allowfullscreen
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          title="NextGen Media VSL — Tayyab Ali"
+        ></iframe>
+      </div>
+      <div class="vsl-card-info">
+        <div class="vsl-card-cat">⭐ Must Watch — VSL</div>
+        <div class="vsl-card-title">Why Brands Choose NextGen Media</div>
+        <div class="vsl-card-desc">Watch this before reaching out. This video breaks down my editing process, results, and exactly what makes my work convert.</div>
+        <a href="#contact" class="vsl-card-link">Work With Me →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PORTFOLIO -->
 <section id="work" class="work-wrap">
   <div class="sec-head rv">
     <div class="sec-n">01</div>
@@ -475,7 +505,7 @@ footer { background:var(--black); border-top:1px solid rgba(255,255,255,.05); pa
 
     <div class="wi feat rv" data-cat="cinematic" onclick="openVid('Aq1OT1jy8LU', false)">
       <div class="wi-thumb">
-        <img src="https://img.youtube.com/vi/Aq1OT1jy8LU/hqdefault.jpg" alt="Cinematic Showreel" loading="lazy">
+        <img src="https://img.youtube.com/vi/Aq1OT1jy8LU/maxresdefault.jpg" onerror="this.src='https://img.youtube.com/vi/Aq1OT1jy8LU/hqdefault.jpg'" alt="Cinematic Showreel" loading="lazy">
         <div class="wi-overlay"><div class="play-circle">&#9654;</div></div>
       </div>
       <div class="wi-info">
@@ -488,7 +518,7 @@ footer { background:var(--black); border-top:1px solid rgba(255,255,255,.05); pa
 
     <div class="wi rv" data-cat="reel" onclick="openVid('mmYNXylU6es', false)">
       <div class="wi-thumb">
-        <img src="https://img.youtube.com/vi/mmYNXylU6es/hqdefault.jpg" alt="High Energy Reel" loading="lazy">
+        <img src="https://img.youtube.com/vi/mmYNXylU6es/maxresdefault.jpg" onerror="this.src='https://img.youtube.com/vi/mmYNXylU6es/hqdefault.jpg'" alt="High Energy Reel" loading="lazy">
         <div class="wi-overlay"><div class="play-circle">&#9654;</div></div>
       </div>
       <div class="wi-info">
@@ -501,7 +531,7 @@ footer { background:var(--black); border-top:1px solid rgba(255,255,255,.05); pa
 
     <div class="wi rv" data-cat="brand" onclick="openVid('TsLl54UmB8g', false)">
       <div class="wi-thumb">
-        <img src="https://img.youtube.com/vi/TsLl54UmB8g/hqdefault.jpg" alt="Brand Story" loading="lazy">
+        <img src="https://img.youtube.com/vi/TsLl54UmB8g/maxresdefault.jpg" onerror="this.src='https://img.youtube.com/vi/TsLl54UmB8g/hqdefault.jpg'" alt="Brand Story" loading="lazy">
         <div class="wi-overlay"><div class="play-circle">&#9654;</div></div>
       </div>
       <div class="wi-info">
@@ -514,7 +544,7 @@ footer { background:var(--black); border-top:1px solid rgba(255,255,255,.05); pa
 
     <div class="wi rv" data-cat="motion" onclick="openVid('WuxZziKwFno', false)">
       <div class="wi-thumb">
-        <img src="https://img.youtube.com/vi/WuxZziKwFno/hqdefault.jpg" alt="Motion VFX" loading="lazy">
+        <img src="https://img.youtube.com/vi/WuxZziKwFno/maxresdefault.jpg" onerror="this.src='https://img.youtube.com/vi/WuxZziKwFno/hqdefault.jpg'" alt="Motion VFX" loading="lazy">
         <div class="wi-overlay"><div class="play-circle">&#9654;</div></div>
       </div>
       <div class="wi-info">
@@ -527,7 +557,7 @@ footer { background:var(--black); border-top:1px solid rgba(255,255,255,.05); pa
 
     <div class="wi feat rv" data-cat="cinematic" onclick="openVid('YIizVWAeR3g', false)">
       <div class="wi-thumb">
-        <img src="https://img.youtube.com/vi/YIizVWAeR3g/hqdefault.jpg" alt="Cinematic Visual" loading="lazy">
+        <img src="https://img.youtube.com/vi/YIizVWAeR3g/maxresdefault.jpg" onerror="this.src='https://img.youtube.com/vi/YIizVWAeR3g/hqdefault.jpg'" alt="Cinematic Visual" loading="lazy">
         <div class="wi-overlay"><div class="play-circle">&#9654;</div></div>
       </div>
       <div class="wi-info">
@@ -538,11 +568,9 @@ footer { background:var(--black); border-top:1px solid rgba(255,255,255,.05); pa
       </div>
     </div>
 
-
-
     <div class="wi rv" data-cat="brand" onclick="openVid('QrOV_0RVG8M', false)">
       <div class="wi-thumb">
-        <img src="https://img.youtube.com/vi/QrOV_0RVG8M/hqdefault.jpg" alt="Product Showcase" loading="lazy">
+        <img src="https://img.youtube.com/vi/QrOV_0RVG8M/maxresdefault.jpg" onerror="this.src='https://img.youtube.com/vi/QrOV_0RVG8M/hqdefault.jpg'" alt="Product Showcase" loading="lazy">
         <div class="wi-overlay"><div class="play-circle">&#9654;</div></div>
       </div>
       <div class="wi-info">
@@ -555,7 +583,7 @@ footer { background:var(--black); border-top:1px solid rgba(255,255,255,.05); pa
 
     <div class="wi rv" data-cat="motion" onclick="openVid('0W7vllYxCSY', false)">
       <div class="wi-thumb">
-        <img src="https://img.youtube.com/vi/0W7vllYxCSY/hqdefault.jpg" alt="Dynamic Motion" loading="lazy">
+        <img src="https://img.youtube.com/vi/0W7vllYxCSY/maxresdefault.jpg" onerror="this.src='https://img.youtube.com/vi/0W7vllYxCSY/hqdefault.jpg'" alt="Dynamic Motion" loading="lazy">
         <div class="wi-overlay"><div class="play-circle">&#9654;</div></div>
       </div>
       <div class="wi-info">
@@ -568,7 +596,7 @@ footer { background:var(--black); border-top:1px solid rgba(255,255,255,.05); pa
 
     <div class="wi rv" data-cat="cinematic" onclick="openVid('JRwH81vX0fs', false)">
       <div class="wi-thumb">
-        <img src="https://img.youtube.com/vi/JRwH81vX0fs/hqdefault.jpg" alt="Cinematic Atmosphere" loading="lazy">
+        <img src="https://img.youtube.com/vi/JRwH81vX0fs/maxresdefault.jpg" onerror="this.src='https://img.youtube.com/vi/JRwH81vX0fs/hqdefault.jpg'" alt="Cinematic Atmosphere" loading="lazy">
         <div class="wi-overlay"><div class="play-circle">&#9654;</div></div>
       </div>
       <div class="wi-info">
@@ -579,10 +607,9 @@ footer { background:var(--black); border-top:1px solid rgba(255,255,255,.05); pa
       </div>
     </div>
 
-    <!-- NEW: YouTube Short -->
     <div class="wi rv" data-cat="reel" onclick="openVid('Om80ZXFxD1M', true)">
       <div class="wi-thumb">
-        <img src="https://img.youtube.com/vi/Om80ZXFxD1M/hqdefault.jpg" alt="YouTube Short" loading="lazy">
+        <img src="https://img.youtube.com/vi/Om80ZXFxD1M/maxresdefault.jpg" onerror="this.src='https://img.youtube.com/vi/Om80ZXFxD1M/hqdefault.jpg'" alt="YouTube Short" loading="lazy">
         <div class="wi-overlay"><div class="play-circle">&#9654;</div></div>
       </div>
       <div class="wi-info">
@@ -592,8 +619,6 @@ footer { background:var(--black); border-top:1px solid rgba(255,255,255,.05); pa
         <button class="wi-link" onclick="event.stopPropagation();openVid('Om80ZXFxD1M', true)">Watch Now →</button>
       </div>
     </div>
-
-
 
   </div>
 </section>
@@ -626,7 +651,7 @@ footer { background:var(--black); border-top:1px solid rgba(255,255,255,.05); pa
     </div>
     <div class="testi-card rv">
       <div class="testi-stars"><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span></div>
-      <p class="testi-text">"Man your work is W! Delivered ahead of deadline with zero revisions needed. If you want a video editor who actually understands retention.This is your guy."</p>
+      <p class="testi-text">"Man your work is W! Delivered ahead of deadline with zero revisions needed. If you want a video editor who actually understands retention. This is your guy."</p>
       <div class="testi-author">
         <div class="testi-avatar">A</div>
         <div><div class="testi-name">Ibrahim Alameddine</div><div class="testi-role">Marketing Agency, AUS</div></div>
@@ -668,7 +693,6 @@ footer { background:var(--black); border-top:1px solid rgba(255,255,255,.05); pa
   </div>
   <div class="about-mini-grid" style="grid-template-columns:1fr 1.1fr;">
 
-    <!-- LEFT: TEXT -->
     <div class="about-txt rv">
       <h2>STORIES TOLD<br><span style="background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent;">FRAME BY FRAME</span></h2>
       <p>I'm <span class="hl">Tayyab Ali</span> — video editor and motion designer running <span class="hl">NextGen Media</span> from Pakistan. 3+ years turning raw footage into high-performance content for brands, creators, and SaaS companies worldwide.</p>
@@ -697,7 +721,6 @@ footer { background:var(--black); border-top:1px solid rgba(255,255,255,.05); pa
       </div>
     </div>
 
-    <!-- RIGHT: CINEMATIC PHOTO -->
     <div class="about-img-wrap rv">
       <div class="about-img-outer">
         <div class="about-deco-dot-wrap">
@@ -742,7 +765,7 @@ footer { background:var(--black); border-top:1px solid rgba(255,255,255,.05); pa
         <a href="mailto:nextgenmediaconnect@gmail.com" class="ct-link"><div class="ct-ico"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M24 5.457v13.909c0 .904-.732 1.636-1.636 1.636h-3.819V11.73L12 16.64l-6.545-4.91v9.273H1.636A1.636 1.636 0 0 1 0 19.366V5.457c0-2.023 2.309-3.178 3.927-1.964L5.455 4.64 12 9.548l6.545-4.91 1.528-1.145C21.69 2.28 24 3.434 24 5.457z" fill="#EA4335"/></svg></div><div><div class="ct-label">Email</div><div class="ct-val">nextgenmediaconnect@gmail.com</div></div></a>
         <a href="https://www.instagram.com/nextgenmedia_official/" target="_blank" class="ct-link"><div class="ct-ico"><svg width="22" height="22" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><defs><radialGradient id="ig1" cx="30%" cy="107%" r="150%"><stop offset="0%" stop-color="#fdf497"/><stop offset="5%" stop-color="#fdf497"/><stop offset="45%" stop-color="#fd5949"/><stop offset="60%" stop-color="#d6249f"/><stop offset="90%" stop-color="#285AEB"/></radialGradient></defs><rect width="24" height="24" rx="5" fill="url(#ig1)"/><path d="M12 7.5a4.5 4.5 0 1 0 0 9 4.5 4.5 0 0 0 0-9zm0 7.4a2.9 2.9 0 1 1 0-5.8 2.9 2.9 0 0 1 0 5.8z" fill="#fff"/><circle cx="17.2" cy="6.8" r="1.1" fill="#fff"/></svg></div><div><div class="ct-label">Instagram</div><div class="ct-val">@nextgenmedia_official</div></div></a>
         <a href="https://www.linkedin.com/in/tayyab-ali-577997393/" target="_blank" class="ct-link"><div class="ct-ico"><svg width="22" height="22" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><rect width="24" height="24" rx="4" fill="#0A66C2"/><path d="M7.5 9.5h-3v9h3v-9zm-1.5-1a1.75 1.75 0 1 0 0-3.5 1.75 1.75 0 0 0 0 3.5zm12.5 1c-1.7 0-2.7.9-3 1.5v-1.5h-3v9h3v-4.8c0-1.4.7-2.2 2-2.2 1.2 0 1.7.8 1.7 2.2v4.8h3v-5.5c0-2.5-1.3-3.5-3.7-3.5z" fill="#fff"/></svg></div><div><div class="ct-label">LinkedIn</div><div class="ct-val">Tayyab Ali</div></div></a>
-        <a href="https://x.com/Nextgenmedia99" target="_blank" class="ct-link"><div class="ct-ico"><svg width="22" height="22" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><rect width="24" height="24" rx="4" fill="#000"/><path d="M17.75 4h-2.6l-3.4 4.5L8.4 4H3.5l5.8 7.8L3.5 20H6l3.7-4.9 3.8 4.9h5l-6-8.1L17.75 4z" fill="#fff"/></svg></div><div><div class="ct-label">X (Twitter)</div><div class="ct-val">@Nextgenmedia99</div></div></a>
+        <a href="https://x.com/Nextgenmedia99" target="_blank" class="ct-link"><div class="ct-ico"><svg width="22" height="22" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><rect width="24" height="24" rx="4" fill="#000"/><path d="M17.75 4h-2.6l-3.4 4.5L8.4 4H3.5l5.8 7.8L3.5 20H6l3.7-4.9 3.8 4.9h5l-6-8.1L17.75 4z" fill="#fff"/></svg></a>
       </div>
     </div>
     <div class="ct-right rv">
@@ -778,17 +801,12 @@ document.querySelectorAll('a,button,.wi').forEach(function(el){el.addEventListen
 var obs=new IntersectionObserver(function(entries){entries.forEach(function(en,i){if(en.isIntersecting){setTimeout(function(){en.target.classList.add('vis');},i*70);obs.unobserve(en.target);}});},{threshold:0.07});
 document.querySelectorAll('.rv').forEach(function(el){obs.observe(el);});
 
-/* VIDEO MODAL — supports Shorts (vertical) */
+/* VIDEO MODAL */
 var modal=document.getElementById('vidModal'),mFrame=document.getElementById('mFrame'),mClose=document.getElementById('mClose'),modalBox=document.getElementById('modalBox');
 function openVid(id, isShort){
-  if(isShort){
-    modalBox.classList.add('shorts-mode');
-    modalBox.style.maxWidth='360px';
-  } else {
-    modalBox.classList.remove('shorts-mode');
-    modalBox.style.maxWidth='980px';
-  }
-  mFrame.setAttribute('src','https://www.youtube.com/embed/'+id+'?autoplay=1&rel=0&modestbranding=1');
+  if(isShort){modalBox.classList.add('shorts-mode');modalBox.style.maxWidth='360px';}
+  else{modalBox.classList.remove('shorts-mode');modalBox.style.maxWidth='980px';}
+  mFrame.setAttribute('src','https://www.youtube.com/embed/'+id+'?autoplay=1&rel=0&modestbranding=1&vq=hd1080&hd=1');
   modal.classList.add('show');
   document.body.style.overflow='hidden';
 }
